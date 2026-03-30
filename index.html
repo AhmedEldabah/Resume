@@ -84,6 +84,27 @@
 
         .hamburger { display: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; }
 
+        /* --- BUTTONS --- */
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--accent); color: var(--bg-main) !important; 
+            padding: 15px 35px; border-radius: 8px; font-weight: 800; 
+            text-decoration: none; transition: var(--transition); border: 2px solid var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .btn-primary:hover { 
+            background: transparent; color: var(--accent) !important; 
+            box-shadow: 0 0 30px var(--accent-glow); 
+        }
+
+        .btn-resume {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--text-main); color: var(--bg-main) !important; 
+            padding: 15px 35px; border-radius: 8px; font-weight: 800; 
+            text-decoration: none; transition: var(--transition); border: 2px solid var(--text-main);
+        }
+        .btn-resume:hover { background: transparent; color: var(--text-main) !important; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+
         /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 50px;
@@ -214,13 +235,21 @@
         .whatsapp-card:hover { border-color: var(--whatsapp); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.1); }
         .whatsapp-card i { color: var(--whatsapp); }
 
-        .btn-resume {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: var(--text-main); color: var(--bg-main) !important; 
-            padding: 15px 35px; border-radius: 8px; font-weight: 800; 
-            text-decoration: none; transition: var(--transition); border: 2px solid var(--text-main);
+        /* --- BACK TO TOP BUTTON --- */
+        #back-to-top {
+            position: fixed; bottom: 30px; right: 30px;
+            background: rgba(14, 165, 233, 0.1); border: 1px solid var(--accent);
+            color: var(--accent); width: 45px; height: 45px;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 1.2rem; z-index: 999; cursor: pointer;
+            opacity: 0; visibility: hidden; transition: var(--transition);
+            text-decoration: none; backdrop-filter: blur(5px);
         }
-        .btn-resume:hover { background: transparent; color: var(--text-main) !important; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        #back-to-top.show { opacity: 1; visibility: visible; }
+        #back-to-top:hover { 
+            background: var(--accent); color: var(--bg-main); 
+            box-shadow: 0 0 15px var(--accent-glow); transform: translateY(-3px); 
+        }
 
         /* --- FOOTER --- */
         footer { padding: 40px 5%; text-align: center; border-top: 1px solid var(--glass-border); margin-top: 50px; }
@@ -266,6 +295,7 @@
             .availability { font-size: 0.8rem; padding: 8px 15px; margin-bottom: 30px; }
             
             .btn-resume { width: 100%; justify-content: center; }
+            #back-to-top { bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -288,178 +318,184 @@
         <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content reveal">
-            <span class="mono hero-greeting">Hello, World. I am</span>
-            <h1>Ahmed <span>Eldabah.</span><br>Future Dentist & <span class="typing-container"></span><span class="cursor"></span></h1>
-            <p>I build immersive digital experiences and craft perfect smiles. Bridging the precision of healthcare with the limitless logic of technology.</p>
-            
-            <a href="#about" class="btn-contact" style="background: var(--text-main); color: var(--bg-main) !important; border-color: var(--text-main);">Explore My Work</a>
-        </div>
-    </section>
-
-    <section class="section" id="about">
-        <div class="section-header reveal">
-            <span class="mono">01.</span>
-            <h2>About Me</h2>
-        </div>
-        
-        <div class="about-grid">
-            <div class="about-text reveal">
-                <p>Hi, I'm <strong>Ahmed!</strong> I'm 20 years old and based in Beverly Hills, Giza.</p>
-                <p>I am currently in my third year of dental school at <strong>MSA University</strong>, and I am also a self taught web and game developer.</p>
-                <p>You might ask me how those two things go together. Honestly, I started coding when I was around 14 just because I wanted to make my own video games. That curiosity grew into a genuine passion for web development. Dentistry came later, but I quickly realized it requires the exact same mindset.</p>
-                <p>Both fields are all about solving problems and obsessing over the tiny details. Whether I am trying to understand the anatomy of a tooth or trying to figure out why my code is breaking, I just really enjoy the process of building and fixing things. When I am not studying for exams, you can usually find me building websites or working on a new tech project.</p>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content reveal">
+                <span class="mono hero-greeting">Hello, World. I am</span>
+                <h1>Ahmed <span>Eldabah.</span><br>Future Dentist & <span class="typing-container"></span><span class="cursor"></span></h1>
+                <p>I build immersive digital experiences and craft perfect smiles. Bridging the precision of healthcare with the limitless logic of technology.</p>
                 
-                <div class="tech-tags">
-                    <span class="tech-tag">HTML / CSS / JS</span>
-                    <span class="tech-tag">Game Design</span>
-                    <span class="tech-tag">UI / UX</span>
-                    <span class="tech-tag">Robotics</span>
-                </div>
+                <a href="#about" class="btn-primary">Explore My Work</a>
             </div>
-            
-            <div class="info-card reveal" style="transition-delay: 0.2s;">
-                <div class="info-item">
-                    <span class="info-label">Name</span>
-                    <span class="info-value">Ahmed Eldabah</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Born</span>
-                    <span class="info-value">20 / 4 / 2005</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Location</span>
-                    <span class="info-value">Beverly Hills, Giza</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Focus</span>
-                    <span class="info-value">Web Dev / Dentistry</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="skills">
-        <div class="section-header reveal">
-            <span class="mono">02.</span>
-            <h2>Areas of Expertise</h2>
-        </div>
-        
-        <div class="skills-grid">
-            <div class="skill-card reveal">
-                <div class="skill-badge">6 Years</div>
-                <i class="fas fa-code skill-icon"></i>
-                <h3>Web Development</h3>
-                <p>Deeply self taught in front end and back end web technologies. Creating responsive, modern, and highly interactive user interfaces from scratch.</p>
+        <section class="section" id="about">
+            <div class="section-header reveal">
+                <span class="mono">01.</span>
+                <h2>About Me</h2>
             </div>
             
-            <div class="skill-card reveal" style="transition-delay: 0.1s;">
-                <div class="skill-badge">4 Years</div>
-                <i class="fas fa-gamepad skill-icon"></i>
-                <h3>Game Programming</h3>
-                <p>Extensive experience in logic building, physics engines, and interactive system design for video games, turning abstract concepts into playable reality.</p>
-            </div>
-            
-            <div class="skill-card reveal" style="transition-delay: 0.2s;">
-                <div class="skill-badge">Certified</div>
-                <i class="fas fa-robot skill-icon"></i>
-                <h3>Robotics</h3>
-                <p>Completed academic robotics workshops at Ain Shams University, expanding my understanding of hardware software integration and automated systems.</p>
-            </div>
-            
-            <div class="skill-card reveal">
-                <div class="skill-badge">Year 3</div>
-                <i class="fas fa-tooth skill-icon"></i>
-                <h3>Clinical Dentistry</h3>
-                <p>Currently mastering dental anatomy, restorative techniques, and patient care, applying rigorous scientific methodology to aesthetic health.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="education">
-        <div class="section-header reveal">
-            <span class="mono">03.</span>
-            <h2>Academic Journey</h2>
-        </div>
-        
-        <div class="timeline">
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="mono timeline-date">Current</span>
-                    <h3>MSA University</h3>
-                    <h4>Faculty of Dentistry — 3rd Year</h4>
-                    <p>Currently navigating my third year of comprehensive clinical and theoretical dental education, developing fine motor skills and diagnostic expertise.</p>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>Hi, I'm <strong>Ahmed!</strong> I'm 20 years old and based in Beverly Hills, Giza.</p>
+                    <p>I am currently in my third year of dental school at <strong>MSA University</strong>, and I am also a self taught web and game developer.</p>
+                    <p>You might ask me how those two things go together. Honestly, I started coding when I was around 14 just because I wanted to make my own video games. That curiosity grew into a genuine passion for web development. Dentistry came later, but I quickly realized it requires the exact same mindset.</p>
+                    <p>Both fields are all about solving problems and obsessing over the tiny details. Whether I am trying to understand the anatomy of a tooth or trying to figure out why my code is breaking, I just really enjoy the process of building and fixing things. When I am not studying for exams, you can usually find me building websites or working on a new tech project.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML / CSS / JS</span>
+                        <span class="tech-tag">Game Design</span>
+                        <span class="tech-tag">UI / UX</span>
+                        <span class="tech-tag">Robotics</span>
+                    </div>
+                </div>
+                
+                <div class="info-card reveal" style="transition-delay: 0.2s;">
+                    <div class="info-item">
+                        <span class="info-label">Name</span>
+                        <span class="info-value">Ahmed Eldabah</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Born</span>
+                        <span class="info-value">20 / 4 / 2005</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Location</span>
+                        <span class="info-value">Beverly Hills, Giza</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Focus</span>
+                        <span class="info-value">Web Dev / Dentistry</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="mono timeline-date">Certification</span>
-                    <h3>Ain Shams University</h3>
-                    <h4>Faculty of Computer & Information Sciences</h4>
-                    <p>Successfully completed academic Robotics workshops, bridging the gap between mechanical engineering and software programming.</p>
-                </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="section-header reveal">
+                <span class="mono">02.</span>
+                <h2>Areas of Expertise</h2>
             </div>
             
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="mono timeline-date">Graduated</span>
-                    <h3>Egyptian American Language School</h3>
-                    <h4>High School Diploma</h4>
-                    <p>Completed my secondary education here, building a strong foundation in sciences and mathematics.</p>
+            <div class="skills-grid">
+                <div class="skill-card reveal">
+                    <div class="skill-badge">6 Years</div>
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3>Web Development</h3>
+                    <p>Deeply self taught in front end and back end web technologies. Creating responsive, modern, and highly interactive user interfaces from scratch.</p>
+                </div>
+                
+                <div class="skill-card reveal" style="transition-delay: 0.1s;">
+                    <div class="skill-badge">4 Years</div>
+                    <i class="fas fa-gamepad skill-icon"></i>
+                    <h3>Game Programming</h3>
+                    <p>Extensive experience in logic building, physics engines, and interactive system design for video games, turning abstract concepts into playable reality.</p>
+                </div>
+                
+                <div class="skill-card reveal" style="transition-delay: 0.2s;">
+                    <div class="skill-badge">Certified</div>
+                    <i class="fas fa-robot skill-icon"></i>
+                    <h3>Robotics</h3>
+                    <p>Completed academic robotics workshops at Ain Shams University, expanding my understanding of hardware software integration and automated systems.</p>
+                </div>
+                
+                <div class="skill-card reveal">
+                    <div class="skill-badge">Year 3</div>
+                    <i class="fas fa-tooth skill-icon"></i>
+                    <h3>Clinical Dentistry</h3>
+                    <p>Currently mastering dental anatomy, restorative techniques, and patient care, applying rigorous scientific methodology to aesthetic health.</p>
                 </div>
             </div>
+        </section>
+
+        <section class="section" id="education">
+            <div class="section-header reveal">
+                <span class="mono">03.</span>
+                <h2>Academic Journey</h2>
+            </div>
             
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="mono timeline-date">Early Years</span>
-                    <h3>Babyhome School</h3>
-                    <h4>Primary Education</h4>
-                    <p>Where the curiosity for learning, taking things apart, and building them back together first began.</p>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="mono timeline-date">Current</span>
+                        <h3>MSA University</h3>
+                        <h4>Faculty of Dentistry — 3rd Year</h4>
+                        <p>Currently navigating my third year of comprehensive clinical and theoretical dental education, developing fine motor skills and diagnostic expertise.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="mono timeline-date">Certification</span>
+                        <h3>Ain Shams University</h3>
+                        <h4>Faculty of Computer & Information Sciences</h4>
+                        <p>Successfully completed academic Robotics workshops, bridging the gap between mechanical engineering and software programming.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="mono timeline-date">Graduated</span>
+                        <h3>Egyptian American Language School</h3>
+                        <h4>High School Diploma</h4>
+                        <p>Completed my secondary education here, building a strong foundation in sciences and mathematics.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="mono timeline-date">Early Years</span>
+                        <h3>Babyhome School</h3>
+                        <h4>Primary Education</h4>
+                        <p>Where the curiosity for learning, taking things apart, and building them back together first began.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section contact-section" id="contact">
-        <div class="section-header reveal">
-            <span class="mono">04.</span>
-            <h2>Interested? Let's Work Together.</h2>
-        </div>
-        
-        <div class="availability reveal">
-            <span class="pulse-dot"></span> Available for freelance web projects & tech opportunities
-        </div>
-
-        <div class="contact-grid">
-            <a href="mailto:ahmedmohamedeldabah@gmail.com" class="contact-card reveal" rel="noopener noreferrer">
-                <i class="fas fa-envelope"></i>
-                <h4>Email Me</h4>
-                <p>ahmedmohamedeldabah@gmail.com</p>
-            </a>
+        <section class="section contact-section" id="contact">
+            <div class="section-header reveal">
+                <span class="mono">04.</span>
+                <h2>Interested? Let's Work Together.</h2>
+            </div>
             
-            <a href="tel:+201000011205" class="contact-card reveal" style="transition-delay: 0.1s;" rel="noopener noreferrer">
-                <i class="fas fa-phone-alt"></i>
-                <h4>Call Me</h4>
-                <p>+20 100 001 1205</p>
-            </a>
+            <div class="availability reveal">
+                <span class="pulse-dot"></span> Available for freelance web projects & tech opportunities
+            </div>
 
-            <a href="https://api.whatsapp.com/send?phone=201557650318" target="_blank" class="contact-card whatsapp-card reveal" style="transition-delay: 0.2s;" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i>
-                <h4>WhatsApp</h4>
-                <p>+20 15 5765 0318</p>
-            </a>
-        </div>
+            <div class="contact-grid">
+                <a href="mailto:ahmedmohamedeldabah@gmail.com" class="contact-card reveal" rel="noopener noreferrer">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email Me</h4>
+                    <p>ahmedmohamedeldabah@gmail.com</p>
+                </a>
+                
+                <a href="tel:+201000011205" class="contact-card reveal" style="transition-delay: 0.1s;" rel="noopener noreferrer">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>Call Me</h4>
+                    <p>+20 100 001 1205</p>
+                </a>
 
-        <div class="reveal" style="margin-top: 40px;">
-            <a href="https://drive.google.com/file/d/1yYhjgwt_Du1zdQWKj6gCU72BUcJpNEvQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-resume"><i class="fas fa-file-pdf"></i> Download PDF Resume</a>
-        </div>
-    </section>
+                <a href="https://api.whatsapp.com/send?phone=201557650318" target="_blank" class="contact-card whatsapp-card reveal" style="transition-delay: 0.2s;" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>WhatsApp</h4>
+                    <p>+20 15 5765 0318</p>
+                </a>
+            </div>
+
+            <div class="reveal" style="margin-top: 40px;">
+                <a href="https://drive.google.com/file/d/1yYhjgwt_Du1zdQWKj6gCU72BUcJpNEvQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-resume"><i class="fas fa-file-pdf"></i> Download PDF Resume</a>
+            </div>
+        </section>
+    </main>
+
+    <a href="#home" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <footer>
         <p>Designed & Built by Ahmed Eldabah &copy; 2026</p>
@@ -476,11 +512,12 @@
             }, 1000); 
         });
 
-        // 2. Scroll Progress Bar, Navbar Glass Effect, & Scrollspy (Active Links)
+        // 2. Scroll Progress Bar, Navbar Glass Effect, Back to Top, & Scrollspy (Active Links)
         const nav = document.getElementById('navbar');
         const progressBar = document.getElementById('scroll-progress');
         const sections = document.querySelectorAll('section');
         const navItems = document.querySelectorAll('.nav-links .nav-item');
+        const backToTop = document.getElementById('back-to-top');
         
         window.addEventListener('scroll', () => {
             // Navbar Glass Effect
@@ -490,6 +527,13 @@
                 nav.classList.remove('scrolled');
             }
             
+            // Back to Top Button Logic
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+
             // Progress Bar Calculation
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -500,7 +544,6 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 // Add a small offset so it highlights slightly before the section hits the exact top
                 if (pageYOffset >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
