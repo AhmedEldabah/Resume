@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Ahmed Eldabah | Digital CV</title>
+    <meta name="description" content="Ahmed Eldabah - Future Dentist & Web Developer. Bridging healthcare precision with technology.">
+    <meta property="og:title" content="Ahmed Eldabah | Digital CV">
+    <meta property="og:description" content="Future Dentist & Web Developer based in Giza. Explore my interactive portfolio.">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- PREMIUM TECH-DARK VARIABLES --- */
+        :root {
+            --bg-main: #0B1120; 
+            --bg-sec: #1E293B; 
+            --accent: #0EA5E9; 
+            --accent-glow: rgba(14, 165, 233, 0.4);
+            --whatsapp: #25D366;
+            --text-main: #F8FAFC; 
+            --text-muted: #94A3B8; 
+            --glass: rgba(15, 23, 42, 0.7); 
+            --glass-border: rgba(255, 255, 255, 0.08); 
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        
+        /* Subtle Dot Matrix Background for Engineering Vibe */
+        body { 
+            background-color: var(--bg-main); 
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
+            line-height: 1.6; 
+        }
+        
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; }
+        .mono { font-family: 'Fira Code', monospace; color: var(--accent); font-size: 0.9rem; }
+
+        /* --- SCROLL PROGRESS BAR --- */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+            background: var(--accent); z-index: 10000;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* --- PRELOADER --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-main); z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease, visibility 1s; 
+        }
+        .loader-bracket { font-family: 'Fira Code', monospace; font-size: 3rem; color: var(--accent); animation: pulse 1.5s infinite alternate; }
+        @keyframes pulse { 0% { opacity: 0.3; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.1); text-shadow: 0 0 20px var(--accent-glow); } }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            background: transparent; transition: var(--transition);
+        }
+        nav.scrolled { background: var(--glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); padding: 15px 5%; }
+        
+        .logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 5px; }
+        .logo span { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: var(--transition); cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active-link { color: var(--accent); }
+        
+        .btn-contact { background: rgba(14, 165, 233, 0.1); color: var(--accent) !important; padding: 10px 24px; border-radius: 8px; border: 1px solid var(--accent); }
+        .btn-contact:hover { background: var(--accent); color: var(--bg-main) !important; box-shadow: 0 0 20px var(--accent-glow); }
+
+        .hamburger { display: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 50px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 20%; right: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            border-radius: 50%; z-index: 0; opacity: 0.5;
+        }
+        
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-greeting { display: block; margin-bottom: 20px; }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { color: var(--accent); }
+        
+        /* Typing Effect Styles */
+        .typing-container { color: var(--accent); display: inline-block; }
+        .cursor { display: inline-block; width: 3px; background-color: var(--accent); margin-left: 2px; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .hero p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; }
+
+        /* --- ABOUT SECTION --- */
+        .section { padding: 100px 5%; position: relative; z-index: 2; }
+        .section-header { margin-bottom: 60px; display: flex; align-items: center; gap: 20px; }
+        .section-header h2 { font-size: 2.5rem; }
+        .section-header::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); max-width: 300px; }
+
+        .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+        .about-text p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; }
+        .about-text strong { color: var(--text-main); font-weight: 600; }
+        
+        /* Tech Tags / Pills added for visual appeal */
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+        .tech-tag { 
+            background: rgba(14, 165, 233, 0.05); border: 1px solid rgba(14, 165, 233, 0.3); 
+            color: var(--accent); padding: 8px 16px; border-radius: 50px; 
+            font-size: 0.85rem; font-family: 'Fira Code', monospace; 
+            transition: var(--transition);
+        }
+        .tech-tag:hover { background: rgba(14, 165, 233, 0.2); transform: translateY(-2px); }
+
+        .info-card {
+            background: var(--bg-sec); border: 1px solid var(--glass-border); border-radius: 16px;
+            padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;
+        }
+        .info-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent);
+        }
+        .info-item { display: flex; flex-direction: column; gap: 5px; }
+        .info-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .info-value { font-weight: 600; font-size: 1rem; }
+
+        /* --- SKILLS & EXPERIENCE --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .skill-card {
+            background: rgba(30, 41, 59, 0.5); border: 1px solid var(--glass-border); border-radius: 16px;
+            padding: 40px 30px; transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .skill-card:hover { transform: translateY(-10px) scale(1.02); background: var(--bg-sec); border-color: var(--accent); box-shadow: 0 15px 30px rgba(14, 165, 233, 0.1); }
+        .skill-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 25px; transition: transform 0.3s ease; }
+        .skill-card:hover .skill-icon { transform: scale(1.1) rotate(-5deg); }
+        .skill-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+        .skill-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .skill-badge { position: absolute; top: 20px; right: 20px; background: rgba(14, 165, 233, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
+
+        /* --- TIMELINE (EDUCATION) --- */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::before {
+            content: ''; position: absolute; top: 0; left: 20px; height: 100%; width: 2px;
+            background: var(--glass-border);
+        }
+        .timeline-item { position: relative; padding-left: 60px; margin-bottom: 50px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: 11px; top: 0; width: 20px; height: 20px;
+            background: var(--bg-main); border: 2px solid var(--accent); border-radius: 50%;
+            transition: var(--transition); box-shadow: 0 0 10px rgba(14,165,233,0);
+        }
+        .timeline-item:hover .timeline-dot { background: var(--accent); box-shadow: 0 0 15px var(--accent-glow); transform: scale(1.2); }
+        
+        .timeline-date { display: inline-block; margin-bottom: 10px; }
+        .timeline-content { background: var(--bg-sec); border: 1px solid var(--glass-border); padding: 30px; border-radius: 16px; transition: var(--transition); }
+        .timeline-content:hover { border-color: rgba(255,255,255,0.2); transform: translateX(5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .timeline-content h3 { font-size: 1.3rem; margin-bottom: 5px; color: var(--accent); }
+        .timeline-content h4 { font-size: 1rem; color: var(--text-main); margin-bottom: 15px; font-weight: 600; }
+        .timeline-content p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section { text-align: center; }
+        .contact-section .section-header { justify-content: center; margin-bottom: 40px; }
+        .contact-section .section-header::after { display: none; }
+        
+        .availability { 
+            display: inline-flex; align-items: center; gap: 10px; 
+            background: rgba(14, 165, 233, 0.1); border: 1px solid var(--accent); 
+            padding: 10px 20px; border-radius: 50px; font-size: 0.9rem; color: var(--accent);
+            margin-bottom: 50px; font-weight: 600;
+        }
+        .pulse-dot {
+            width: 10px; height: 10px; background: var(--accent); border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        }
+
+        .contact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
+            max-width: 1000px; margin: 0 auto 50px;
+        }
+        .contact-card {
+            background: var(--bg-sec); border: 1px solid var(--glass-border); border-radius: 16px;
+            padding: 40px 20px; text-decoration: none; color: var(--text-main);
+            transition: var(--transition); display: flex; flex-direction: column; align-items: center; gap: 15px;
+        }
+        .contact-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(14, 165, 233, 0.1); }
+        .contact-card i { font-size: 2.5rem; color: var(--accent); transition: var(--transition); }
+        .contact-card:hover i { transform: scale(1.1); }
+        .contact-card h4 { font-size: 1.2rem; }
+        .contact-card p { color: var(--text-muted); font-size: 0.95rem; font-family: 'Fira Code', monospace; }
+        
+        /* WhatsApp Specific Card */
+        .whatsapp-card:hover { border-color: var(--whatsapp); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.1); }
+        .whatsapp-card i { color: var(--whatsapp); }
+
+        .btn-resume {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--text-main); color: var(--bg-main) !important; 
+            padding: 15px 35px; border-radius: 8px; font-weight: 800; 
+            text-decoration: none; transition: var(--transition); border: 2px solid var(--text-main);
+        }
+        .btn-resume:hover { background: transparent; color: var(--text-main) !important; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+
+        /* --- FOOTER --- */
+        footer { padding: 40px 5%; text-align: center; border-top: 1px solid var(--glass-border); margin-top: 50px; }
+        footer p { font-size: 0.85rem; color: var(--text-muted); opacity: 0.6; }
+
+        /* --- ANIMATIONS (Scroll Reveal) --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- MOBILE RESPONSIVE OPTIMIZATION --- */
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 3.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+                background: var(--bg-main); flex-direction: column; justify-content: center;
+                transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1); z-index: -1;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.5rem; }
+            .hamburger { display: block; }
+            
+            /* Mobile Spacing Fixes */
+            .hero { padding-top: 140px; padding-bottom: 40px; align-items: flex-start; }
+            .hero h1 { font-size: 2.2rem; margin-bottom: 15px; }
+            .hero p { font-size: 1.1rem; }
+            
+            .section { padding: 70px 5%; }
+            .section-header { margin-bottom: 40px; }
+            .section-header h2 { font-size: 1.8rem; }
+            
+            .info-card { grid-template-columns: 1fr; padding: 25px; gap: 15px; }
+            
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 45px; margin-bottom: 40px; }
+            .timeline-dot { left: 6px; }
+            .timeline-content { padding: 20px; }
+            
+            .contact-section .section-header h2 { font-size: 1.8rem; text-align: left; }
+            .availability { font-size: 0.8rem; padding: 8px 15px; margin-bottom: 30px; }
+            
+            .btn-resume { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <div id="preloader">
+        <div class="loader-bracket">&lt;AE/&gt;</div>
+    </div>
+
+    <nav id="navbar">
+        <a href="#home" class="logo">Ahmed<span>.</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about" class="nav-item">About</a>
+            <a href="#skills" class="nav-item">Expertise</a>
+            <a href="#education" class="nav-item">Education</a>
+            <a href="#contact" class="btn-contact">Contact Me</a>
+        </div>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content reveal">
+            <span class="mono hero-greeting">Hello, World. I am</span>
+            <h1>Ahmed <span>Eldabah.</span><br>Future Dentist & <span class="typing-container"></span><span class="cursor"></span></h1>
+            <p>I build immersive digital experiences and craft perfect smiles. Bridging the precision of healthcare with the limitless logic of technology.</p>
+            
+            <a href="#about" class="btn-contact" style="background: var(--text-main); color: var(--bg-main) !important; border-color: var(--text-main);">Explore My Work</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="section-header reveal">
+            <span class="mono">01.</span>
+            <h2>About Me</h2>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>Hi, I'm <strong>Ahmed!</strong> I'm 20 years old and based in Beverly Hills, Giza.</p>
+                <p>I am currently in my third year of dental school at <strong>MSA University</strong>, and I am also a self taught web and game developer.</p>
+                <p>You might ask me how those two things go together. Honestly, I started coding when I was around 14 just because I wanted to make my own video games. That curiosity grew into a genuine passion for web development. Dentistry came later, but I quickly realized it requires the exact same mindset.</p>
+                <p>Both fields are all about solving problems and obsessing over the tiny details. Whether I am trying to understand the anatomy of a tooth or trying to figure out why my code is breaking, I just really enjoy the process of building and fixing things. When I am not studying for exams, you can usually find me building websites or working on a new tech project.</p>
+                
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML / CSS / JS</span>
+                    <span class="tech-tag">Game Design</span>
+                    <span class="tech-tag">UI / UX</span>
+                    <span class="tech-tag">Robotics</span>
+                </div>
+            </div>
+            
+            <div class="info-card reveal" style="transition-delay: 0.2s;">
+                <div class="info-item">
+                    <span class="info-label">Name</span>
+                    <span class="info-value">Ahmed Eldabah</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Born</span>
+                    <span class="info-value">20 / 4 / 2005</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Location</span>
+                    <span class="info-value">Beverly Hills, Giza</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Focus</span>
+                    <span class="info-value">Web Dev / Dentistry</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="skills">
+        <div class="section-header reveal">
+            <span class="mono">02.</span>
+            <h2>Areas of Expertise</h2>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <div class="skill-badge">6 Years</div>
+                <i class="fas fa-code skill-icon"></i>
+                <h3>Web Development</h3>
+                <p>Deeply self taught in front end and back end web technologies. Creating responsive, modern, and highly interactive user interfaces from scratch.</p>
+            </div>
+            
+            <div class="skill-card reveal" style="transition-delay: 0.1s;">
+                <div class="skill-badge">4 Years</div>
+                <i class="fas fa-gamepad skill-icon"></i>
+                <h3>Game Programming</h3>
+                <p>Extensive experience in logic building, physics engines, and interactive system design for video games, turning abstract concepts into playable reality.</p>
+            </div>
+            
+            <div class="skill-card reveal" style="transition-delay: 0.2s;">
+                <div class="skill-badge">Certified</div>
+                <i class="fas fa-robot skill-icon"></i>
+                <h3>Robotics</h3>
+                <p>Completed academic robotics workshops at Ain Shams University, expanding my understanding of hardware software integration and automated systems.</p>
+            </div>
+            
+            <div class="skill-card reveal">
+                <div class="skill-badge">Year 3</div>
+                <i class="fas fa-tooth skill-icon"></i>
+                <h3>Clinical Dentistry</h3>
+                <p>Currently mastering dental anatomy, restorative techniques, and patient care, applying rigorous scientific methodology to aesthetic health.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="education">
+        <div class="section-header reveal">
+            <span class="mono">03.</span>
+            <h2>Academic Journey</h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="mono timeline-date">Current</span>
+                    <h3>MSA University</h3>
+                    <h4>Faculty of Dentistry — 3rd Year</h4>
+                    <p>Currently navigating my third year of comprehensive clinical and theoretical dental education, developing fine motor skills and diagnostic expertise.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="mono timeline-date">Certification</span>
+                    <h3>Ain Shams University</h3>
+                    <h4>Faculty of Computer & Information Sciences</h4>
+                    <p>Successfully completed academic Robotics workshops, bridging the gap between mechanical engineering and software programming.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="mono timeline-date">Graduated</span>
+                    <h3>Egyptian American Language School</h3>
+                    <h4>High School Diploma</h4>
+                    <p>Completed my secondary education here, building a strong foundation in sciences and mathematics.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="mono timeline-date">Early Years</span>
+                    <h3>Babyhome School</h3>
+                    <h4>Primary Education</h4>
+                    <p>Where the curiosity for learning, taking things apart, and building them back together first began.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+        <div class="section-header reveal">
+            <span class="mono">04.</span>
+            <h2>Interested? Let's Work Together.</h2>
+        </div>
+        
+        <div class="availability reveal">
+            <span class="pulse-dot"></span> Available for freelance web projects & tech opportunities
+        </div>
+
+        <div class="contact-grid">
+            <a href="mailto:ahmedmohamedeldabah@gmail.com" class="contact-card reveal" rel="noopener noreferrer">
+                <i class="fas fa-envelope"></i>
+                <h4>Email Me</h4>
+                <p>ahmedmohamedeldabah@gmail.com</p>
+            </a>
+            
+            <a href="tel:+201000011205" class="contact-card reveal" style="transition-delay: 0.1s;" rel="noopener noreferrer">
+                <i class="fas fa-phone-alt"></i>
+                <h4>Call Me</h4>
+                <p>+20 100 001 1205</p>
+            </a>
+
+            <a href="https://api.whatsapp.com/send?phone=201557650318" target="_blank" class="contact-card whatsapp-card reveal" style="transition-delay: 0.2s;" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                <h4>WhatsApp</h4>
+                <p>+20 15 5765 0318</p>
+            </a>
+        </div>
+
+        <div class="reveal" style="margin-top: 40px;">
+            <a href="https://drive.google.com/file/d/1yYhjgwt_Du1zdQWKj6gCU72BUcJpNEvQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-resume"><i class="fas fa-file-pdf"></i> Download PDF Resume</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed & Built by Ahmed Eldabah &copy; 2026</p>
+    </footer>
+
+    <script>
+        // 1. Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('preloader').style.visibility = 'hidden';
+                }, 1000);
+            }, 1000); 
+        });
+
+        // 2. Scroll Progress Bar, Navbar Glass Effect, & Scrollspy (Active Links)
+        const nav = document.getElementById('navbar');
+        const progressBar = document.getElementById('scroll-progress');
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links .nav-item');
+        
+        window.addEventListener('scroll', () => {
+            // Navbar Glass Effect
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            // Progress Bar Calculation
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + "%";
+
+            // Scrollspy logic to highlight current section in navbar
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Add a small offset so it highlights slightly before the section hits the exact top
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
+
+        // 3. Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const icon = hamburger.querySelector('i');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if(navLinks.classList.contains('active')){
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // 4. Smooth Scroll Reveal Animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); 
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // 5. Dynamic Typing Effect for Hero Section
+        const textArray = ["Web Developer.", "Game Programmer."];
+        const typingDelay = 100;
+        const erasingDelay = 50;
+        const newTextDelay = 2000; 
+        let textArrayIndex = 0;
+        let charIndex = 0;
+        const typedTextSpan = document.querySelector(".typing-container");
+
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(erase, newTextDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                textArrayIndex++;
+                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                setTimeout(type, typingDelay + 500);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(type, newTextDelay + 250);
+        });
+    </script>
+</body>
+</html>
