@@ -244,7 +244,7 @@
         /* --- WORK --- */
         .work { padding: 48px 0 96px; }
         .work-head { overflow-x: clip; padding-bottom: 8px; }
-        .work-head .mega { white-space: nowrap; }
+        @media (min-width: 768px) { .work-head .mega { white-space: nowrap; } }
         .stack { display: grid; gap: 24px; margin-top: 40px; }
         .project {
             display: grid; gap: 24px;
@@ -381,7 +381,7 @@
             font-family: var(--head); font-stretch: 85%; font-weight: 600;
             font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
             line-height: 1.15; letter-spacing: -0.01em;
-            max-width: 26ch;
+            max-width: 30ch;
         }
         .about-text p + p { margin-top: 0.8em; }
         .about-text .hl { color: var(--accent); }
@@ -393,7 +393,7 @@
 
         /* --- CONTACT --- */
         .contact { padding: 96px 0 40px; }
-        .contact .mega { max-width: 11ch; }
+        .contact .mega { max-width: 11ch; font-size: clamp(3rem, 1.5rem + 6vw, 7.5rem); }
         .contact-row { display: grid; gap: 32px; margin-top: 48px; align-items: center; justify-items: start; }
         .contact-lines { list-style: none; padding: 0; display: grid; gap: 4px; width: 100%; }
         .contact-lines li { display: flex; align-items: center; gap: 12px; min-height: 52px; border-bottom: 1px solid var(--line); }
@@ -417,10 +417,7 @@
         .resume-link { display: inline-block; margin-top: 8px; color: var(--muted); font-size: 0.9375rem; text-underline-offset: 4px; }
         .resume-link:hover { color: var(--ink); }
         @media (min-width: 768px) { .contact-lines a { font-size: 1.0625rem; } }
-        @media (min-width: 900px) {
-            .contact-row { grid-template-columns: auto 1fr; gap: 64px; }
-            .contact-lines { max-width: 520px; justify-self: end; }
-        }
+        .contact-lines { max-width: 520px; }
 
         /* --- OUTRO / FOOTER --- */
         .outro { padding-top: 48px; overflow-x: clip; }
@@ -436,6 +433,115 @@
         .footer-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 0 32px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.875rem; }
         .footer-bar a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
         .footer-bar a:hover { color: var(--ink); }
+
+        /* --- FEATURE STRIP --- */
+        .ticker { overflow: hidden; border-block: 1px solid var(--line); background: var(--bg); padding: 20px 0; }
+        .ticker-track { display: flex; width: max-content; }
+        .ticker-list { display: flex; list-style: none; margin: 0; padding: 0; }
+        .ticker-list li {
+            font-family: var(--head); font-stretch: 66%; font-weight: 800; text-transform: uppercase;
+            font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem); line-height: 1; white-space: nowrap;
+        }
+        .ticker-list li::after { content: "/"; color: var(--accent); margin: 0 0.6em; font-weight: 500; -webkit-text-stroke: 0; }
+        .ticker-list li:nth-child(even) { color: transparent; -webkit-text-stroke: 1.2px var(--muted); }
+
+        /* --- TRY IT: live demo of a booking or order reaching WhatsApp --- */
+        .demo, .services, .about { overflow-x: clip; }
+        .demo { padding: 96px 0; }
+        .demo-intro { margin-top: 20px; color: var(--muted); max-width: 52ch; font-size: 1.125rem; }
+        .demo-grid { display: grid; gap: 40px; margin-top: 48px; align-items: center; }
+        .demo-panel {
+            display: grid; gap: 24px; align-content: start;
+            background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius);
+            padding: 24px;
+        }
+        .tabs { display: flex; justify-self: stretch; padding: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; }
+        .tab { flex: 1; white-space: nowrap; border: 0; background: transparent; padding: 10px 14px; border-radius: 999px; color: var(--muted); font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; }
+        .tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+        .demo-panel fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+        .demo-form { display: grid; gap: 22px; }
+        .demo-form[hidden] { display: none; }
+        .demo-panel legend, .field > span { display: block; margin-bottom: 10px; font-size: 0.8125rem; font-weight: 600; color: var(--muted); }
+        .picks { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pick {
+            padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px;
+            background: transparent; color: var(--ink); font-size: 0.9375rem; cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+        .pick:hover { border-color: var(--muted); }
+        .pick:active { transform: scale(0.96); }
+        .pick[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+        .field input {
+            width: 100%; max-width: 320px; padding: 12px 14px;
+            background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+            color: var(--ink); font: inherit;
+        }
+        .field input:focus { outline: none; border-color: var(--accent); }
+        .steppers { display: grid; gap: 8px; max-width: 420px; }
+        .stepper { display: flex; align-items: center; gap: 12px; padding: 6px 6px 6px 16px; border: 1px solid var(--line); border-radius: 999px; }
+        .stepper > span { flex: 1; }
+        .stepper button { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); font-size: 1.125rem; line-height: 1; cursor: pointer; transition: border-color 0.2s ease; }
+        .stepper button:hover { border-color: var(--accent); }
+        .stepper output { width: 18px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+        .demo-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+        .demo-hint { color: var(--muted); font-size: 0.875rem; }
+        .demo-device { justify-self: center; width: min(330px, 100%); }
+        .wa-phone {
+            position: relative; display: flex; flex-direction: column;
+            height: 620px; overflow: hidden;
+            background: #0B141A; border: 8px solid #050607; border-radius: 40px;
+            box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9);
+        }
+        .wa-head { display: flex; align-items: center; gap: 10px; padding: 30px 14px 10px; background: #1F2C33; }
+        .wa-avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-deep); color: var(--accent); font-weight: 700; flex: none; }
+        .wa-head strong { display: block; font-size: 0.9375rem; line-height: 1.2; }
+        .wa-head small { color: var(--muted); font-size: 0.75rem; }
+        .wa-body {
+            flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px;
+            padding: 14px 12px; overflow: hidden;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 18px 18px;
+        }
+        .wa-day { align-self: center; margin-bottom: auto; padding: 4px 10px; border-radius: 8px; background: #1F2C33; color: var(--muted); font-size: 0.6875rem; }
+        .wa-msg { align-self: flex-start; max-width: 88%; padding: 8px 10px 6px; background: #202C33; border-radius: 4px 12px 12px 12px; font-size: 0.875rem; line-height: 1.4; transform-origin: 0 100%; }
+        .wa-msg time { display: block; margin-top: 2px; text-align: right; color: var(--muted); font-size: 0.6875rem; }
+        .wa-foot { margin: 8px; padding: 11px 16px; border-radius: 999px; background: #1F2C33; color: var(--muted); font-size: 0.875rem; }
+        .wa-notif {
+            position: absolute; z-index: 2; left: 10px; right: 10px; top: 10px;
+            display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+            background: rgba(38, 50, 57, 0.98); border: 1px solid #33444C; border-radius: 18px;
+            box-shadow: 0 16px 30px -12px rgba(0, 0, 0, 0.8);
+            transform: translateY(-150%); transition: transform 0.55s var(--ease-out);
+        }
+        .wa-notif.show { transform: none; }
+        .wa-notif .icon { width: 30px; height: 30px; padding: 6px; border-radius: 9px; background: var(--accent); fill: var(--on-accent); }
+        .wa-notif div { min-width: 0; }
+        .wa-notif strong { display: block; font-size: 0.8125rem; }
+        .wa-notif span { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--muted); font-size: 0.75rem; }
+        .demo-caption { margin-top: 14px; text-align: center; color: var(--muted); font-size: 0.8125rem; }
+        @media (min-width: 768px) { .demo-panel { padding: 36px; } .tabs { justify-self: start; } .tab { flex: none; padding: 10px 18px; } }
+        @media (max-width: 599px) { .wa-phone { height: 520px; } .tab { font-size: 0.875rem; } }
+        @media (min-width: 960px) { .demo-grid { grid-template-columns: 1fr 330px; gap: 72px; } }
+        @media (min-width: 1100px) {
+            .demo-form { grid-template-columns: 1fr 1fr; column-gap: 40px; align-items: start; }
+            .demo-form[data-form="clinic"] fieldset:first-child { grid-row: span 2; }
+        }
+
+        /* --- CONTACT CLOCKS --- */
+        .contact-grid { display: grid; gap: 48px; }
+        .clocks {
+            display: grid; gap: 4px; align-self: end;
+            padding: 28px; border: 1px solid var(--line); border-radius: var(--radius);
+            background: var(--bg-2);
+        }
+        .clock { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+        .clock-city { color: var(--muted); font-size: 0.9375rem; }
+        .clock-time { font-family: var(--head); font-stretch: 66%; font-weight: 900; font-size: clamp(3rem, 2rem + 3vw, 4.5rem); line-height: 0.9; font-variant-numeric: tabular-nums; }
+        .clock:first-child .clock-time { color: var(--accent); }
+        .clock-note { margin-top: 14px; color: var(--muted); font-size: 0.9375rem; }
+        @media (min-width: 1024px) {
+            .contact-grid { grid-template-columns: 1.45fr 1fr; gap: 64px; align-items: end; }
+        }
 
         /* =========================================================
            MOTION. Everything below only runs with JS on and when the
@@ -469,6 +575,17 @@
             .js .is-ready .b2 { transition-delay: 2.1s; animation-delay: 3.8s; }
             @keyframes bob { from { translate: 0 0; } to { translate: 0 -8px; } }
 
+            /* Feature strip scrolls sideways; pauses on hover */
+            .ticker-track { animation: ticker 40s linear infinite; }
+            .ticker:hover .ticker-track { animation-play-state: paused; }
+            @keyframes ticker { to { transform: translateX(-50%); } }
+
+            /* Demo: messages pop into the chat */
+            .wa-msg { animation: msg-in 0.55s var(--ease-pop) both; }
+            @keyframes msg-in { from { opacity: 0; transform: translateY(14px) scale(0.9); } }
+            .clock-time .colon { animation: blink 2s steps(1) infinite; }
+            @keyframes blink { 50% { opacity: 0.25; } }
+
             /* Scroll reveals */
             .js [data-reveal] { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 1s var(--ease-out); transition-delay: var(--d, 0s); }
             .js [data-reveal].in { opacity: 1; transform: none; }
@@ -482,6 +599,7 @@
         @supports (animation-timeline: view()) {
             @media (prefers-reduced-motion: no-preference) {
                 .drift { animation: drift linear both; animation-timeline: view(); animation-range: entry 0% exit 40%; }
+                @media (max-width: 767px) { .drift { animation: none; } }
                 @keyframes drift { from { transform: translateX(14%); } to { transform: translateX(-6%); } }
 
                 .js .about-text .fw { animation: fill linear both; animation-timeline: view(); animation-range: cover 18% cover 42%; }
@@ -565,6 +683,14 @@
             </div>
         </section>
 
+        <!-- Feature strip: things I've built into client and demo sites -->
+        <div class="ticker">
+            <div class="ticker-track">
+                <ul class="ticker-list" aria-label="Things I build into sites"><li>Booking forms</li><li>Bookings to WhatsApp</li><li>Online menus</li><li>Cart and checkout</li><li>Order dashboards</li><li>Arabic and English</li><li>3D models</li><li>Live opening hours</li></ul>
+                <ul class="ticker-list" aria-hidden="true"><li>Booking forms</li><li>Bookings to WhatsApp</li><li>Online menus</li><li>Cart and checkout</li><li>Order dashboards</li><li>Arabic and English</li><li>3D models</li><li>Live opening hours</li></ul>
+            </div>
+        </div>
+
         <!-- 2. WORK -->
         <section class="work" id="work">
             <div class="work-head">
@@ -579,14 +705,14 @@
                         <div class="p-info" data-reveal>
                             <span class="tag">Concept project</span>
                             <h3>Ivory Dental Studio</h3>
-                            <p>A website for a dental clinic. Patients pick a treatment, date and time, and the booking request opens in the clinic's WhatsApp, ready to send.</p>
-                            <ul class="chips" aria-label="Built with"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                            <p>A clinic website in English and Arabic, with a 3D implant you can turn in the hero. Patients pick a treatment and a time, and the booking request opens in the clinic's WhatsApp.</p>
+                            <ul class="chips" aria-label="Built with"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Three.js</li></ul>
                             <a class="p-link" href="https://ahmedeldabah.github.io/clinic/" target="_blank" rel="noopener noreferrer">
                                 Open the live site <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
                             </a>
                         </div>
                         <div class="p-stage" data-reveal style="--d:0.12s">
-                            <div class="laptop"><div class="screen"><img src="assets/work/clinic-desktop.webp" width="1600" height="889" loading="lazy" alt="Ivory Dental Studio homepage on a laptop, with the headline 'The Art of a Perfect Smile' and a Book Appointment button"></div></div>
+                            <div class="laptop"><div class="screen"><img src="assets/work/clinic-desktop.webp" width="1600" height="1000" loading="lazy" alt="Ivory Dental Studio homepage on a laptop: the headline 'The Art of a Perfect Smile' next to a 3D dental implant, with treatment prices and opening hours"></div></div>
                             <div class="phone"><div class="screen"><img src="assets/work/clinic-mobile.webp" width="390" height="844" loading="lazy" alt="Ivory Dental Studio homepage on a phone"></div></div>
                         </div>
                     </article>
@@ -595,14 +721,13 @@
                         <div class="p-info" data-reveal>
                             <span class="tag">Demo</span>
                             <h3>Restaurant online ordering</h3>
-                            <p>Menu, cart and checkout for a restaurant that takes delivery orders. Every order sends a confirmation email and lands on a live dashboard for the kitchen.</p>
+                            <p>Menu, cart and checkout for a restaurant that takes delivery orders. Every order sends a confirmation email and lands on a live kitchen dashboard, in Arabic or English.</p>
                             <ul class="chips" aria-label="Built with"><li>React</li><li>Supabase</li><li>EmailJS</li></ul>
                             <!-- TODO: add a link to the demo if you want one public -->
                         </div>
-                        <!-- TODO: replace both placeholders with real screenshots: dashboard (laptop, 1600x900) and cart (phone, 390x844) -->
                         <div class="p-stage" data-reveal style="--d:0.12s">
-                            <div class="laptop"><div class="screen todo" role="img" aria-label="Screenshot coming soon: the order dashboard"><strong>Screenshot needed</strong>Order dashboard</div></div>
-                            <div class="phone"><div class="screen todo" role="img" aria-label="Screenshot coming soon: the cart on a phone"><strong>Needed</strong>Cart</div></div>
+                            <div class="laptop"><div class="screen"><img src="assets/work/delivery-dashboard.webp" width="1600" height="899" loading="lazy" alt="Orders dashboard with tickets for new, preparing and out-for-delivery orders, each with the customer's name, phone, items and total"></div></div>
+                            <div class="phone"><div class="screen"><img src="assets/work/delivery-cart.webp" width="390" height="844" loading="lazy" alt="Cart on a phone with Mixed Grill, Kofta Skewers and Lamb Ribs, a total and a Checkout button"></div></div>
                         </div>
                     </article>
 
@@ -619,20 +744,45 @@
                             <div class="phone"><div class="screen"><img src="assets/work/nexa-mobile.webp" width="390" height="844" loading="lazy" alt="Nexa Tech School homepage on a phone"></div></div>
                         </div>
                     </article>
+                </div>
+            </div>
+        </section>
 
-                    <article class="project" style="--i:3; --tint:#24140F">
-                        <div class="p-info" data-reveal>
-                            <span class="tag">Client project (restaurant has since closed)</span>
-                            <h3>Lord of the Wings</h3>
-                            <p>The website for Lord of the Wings, a wings restaurant. The restaurant has closed, so the site is shown here as screenshots.</p>
-                            <!-- TODO: add the tech used, e.g. <ul class="chips" aria-label="Built with"><li>...</li></ul> -->
+        <!-- TRY IT: interactive demo of a booking or an order reaching WhatsApp -->
+        <section class="demo" id="demo">
+            <div class="wrap">
+                <h2 class="mega drift">Try it</h2>
+                <p class="demo-intro" data-reveal>Pick what a patient or a customer would choose on your site, then press send. This is the message that lands on your phone.</p>
+                <div class="demo-grid">
+                    <div class="demo-panel" data-reveal>
+                        <div class="tabs" role="tablist" aria-label="Type of demo">
+                            <button type="button" class="tab" role="tab" aria-selected="true" data-mode="clinic">Clinic booking</button>
+                            <button type="button" class="tab" role="tab" aria-selected="false" data-mode="food">Restaurant order</button>
                         </div>
-                        <!-- TODO: replace with real Lord of the Wings screenshots (no live link, the restaurant closed) -->
-                        <div class="p-stage" data-reveal style="--d:0.12s">
-                            <div class="laptop"><div class="screen todo" role="img" aria-label="Screenshot coming soon: Lord of the Wings homepage"><strong>Screenshot needed</strong>Homepage</div></div>
-                            <div class="phone"><div class="screen todo" role="img" aria-label="Screenshot coming soon: Lord of the Wings on a phone"><strong>Needed</strong>Phone view</div></div>
+                        <label class="field"><span>Name</span><input id="demo-name" type="text" value="Sara" maxlength="24" autocomplete="off" spellcheck="false"></label>
+                        <div class="demo-form" data-form="clinic">
+                            <fieldset data-key="treatment"><legend>Treatment</legend><div class="picks"><button type="button" class="pick" aria-pressed="true">Teeth cleaning</button><button type="button" class="pick" aria-pressed="false">Whitening</button><button type="button" class="pick" aria-pressed="false">Check-up</button><button type="button" class="pick" aria-pressed="false">Braces consultation</button></div></fieldset>
+                            <fieldset data-key="day"><legend>Day</legend><div class="picks"><button type="button" class="pick" aria-pressed="false">Tomorrow</button><button type="button" class="pick" aria-pressed="true">Thursday</button><button type="button" class="pick" aria-pressed="false">Saturday</button></div></fieldset>
+                            <fieldset data-key="time"><legend>Time</legend><div class="picks"><button type="button" class="pick" aria-pressed="false">10:00 AM</button><button type="button" class="pick" aria-pressed="false">1:30 PM</button><button type="button" class="pick" aria-pressed="true">6:30 PM</button></div></fieldset>
                         </div>
-                    </article>
+                        <div class="demo-form" data-form="food" hidden>
+                            <fieldset><legend>Items</legend><div class="steppers"><div class="stepper" data-item="Chicken burger"><span>Chicken burger</span><button type="button" data-step="-1" aria-label="One less chicken burger">−</button><output>2</output><button type="button" data-step="1" aria-label="One more chicken burger">+</button></div><div class="stepper" data-item="Fries"><span>Fries</span><button type="button" data-step="-1" aria-label="One less fries">−</button><output>1</output><button type="button" data-step="1" aria-label="One more fries">+</button></div><div class="stepper" data-item="Shawarma wrap"><span>Shawarma wrap</span><button type="button" data-step="-1" aria-label="One less shawarma wrap">−</button><output>0</output><button type="button" data-step="1" aria-label="One more shawarma wrap">+</button></div><div class="stepper" data-item="Lemon mint"><span>Lemon mint</span><button type="button" data-step="-1" aria-label="One less lemon mint">−</button><output>0</output><button type="button" data-step="1" aria-label="One more lemon mint">+</button></div></div></fieldset>
+                            <fieldset data-key="pay"><legend>Payment</legend><div class="picks"><button type="button" class="pick" aria-pressed="true">Cash on delivery</button><button type="button" class="pick" aria-pressed="false">Card on delivery</button></div></fieldset>
+                        </div>
+                        <div class="demo-actions">
+                            <button type="button" class="btn btn-primary demo-send"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> Send from the website</button>
+                            <span class="demo-hint" data-hint aria-live="polite"></span>
+                        </div>
+                    </div>
+                    <div class="demo-device" data-reveal style="--d:0.1s">
+                        <div class="wa-phone">
+                            <div class="wa-notif" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><div><strong data-n-name>Sara</strong><span data-n-text></span></div></div>
+                            <div class="wa-head"><span class="wa-avatar" data-avatar aria-hidden="true">S</span><div><strong data-chat-name>Sara</strong><small>via your website</small></div></div>
+                            <div class="wa-body" aria-live="polite" aria-label="Messages on your phone"><div class="wa-day">Today</div></div>
+                            <div class="wa-foot" aria-hidden="true">Message</div>
+                        </div>
+                        <p class="demo-caption">Your phone</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -640,7 +790,7 @@
         <!-- 3. WHAT I DO -->
         <section class="services" id="services">
             <div class="wrap">
-                <h2 class="mega" data-reveal>What I do</h2>
+                <h2 class="mega drift">What I do</h2>
                 <!-- TODO: add starting prices for each service once decided -->
                 <ul class="svc">
                     <li class="svc-row" data-reveal>
@@ -665,7 +815,7 @@
         <!-- 4. ABOUT -->
         <section class="about" id="about">
             <div class="wrap">
-                <h2 class="mega" data-reveal>About me</h2>
+                <h2 class="mega drift">About me</h2>
                 <div class="about-grid">
                     <div class="portrait-col" data-reveal>
                         <button class="portrait" type="button" aria-label="Illustrated portrait of Ahmed. Tap to make him laugh.">
@@ -686,7 +836,8 @@
 
         <!-- 5. CONTACT -->
         <section class="contact" id="contact">
-            <div class="wrap">
+            <div class="wrap contact-grid">
+              <div>
                 <h2 class="mega" data-reveal>Tell me about your clinic or restaurant.</h2>
                 <div class="contact-row" data-reveal>
                     <a href="https://wa.me/201000011205?text=Hi%20Ahmed%2C%20I%20saw%20your%20website." class="btn btn-primary btn-xl magnetic" target="_blank" rel="noopener noreferrer">
@@ -714,6 +865,12 @@
                 </div>
                 <p class="contact-meta">Based in Egypt · working with Dubai clients · replies within 24h</p>
                 <a class="resume-link" href="https://drive.google.com/file/d/1yYhjgwt_Du1zdQWKj6gCU72BUcJpNEvQ/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a>
+              </div>
+                <aside class="clocks" data-reveal aria-label="Local time in Dubai and Cairo">
+                    <div class="clock"><span class="clock-city">Dubai</span><span class="clock-time" data-tz="Asia/Dubai">--:--</span></div>
+                    <div class="clock"><span class="clock-city">Cairo, where I work</span><span class="clock-time" data-tz="Africa/Cairo">--:--</span></div>
+                    <p class="clock-note" data-tz-note>Cairo is one hour behind Dubai.</p>
+                </aside>
             </div>
         </section>
     </main>
@@ -830,7 +987,124 @@
                 });
             });
         });
-        // 7. Background spotlight follows the mouse (desktop only)
+        // 7. Try it: build the message from the picks and drop it into the phone
+        var demoEl = document.getElementById('demo');
+        if (demoEl) {
+            var mode = 'clinic';
+            var nameIn = document.getElementById('demo-name');
+            var chat = demoEl.querySelector('.wa-body');
+            var notif = demoEl.querySelector('.wa-notif');
+            var hint = demoEl.querySelector('[data-hint]');
+            var notifTimer, lastSender = null;
+            var picked = function (form, key) {
+                var b = demoEl.querySelector('[data-form="' + form + '"] [data-key="' + key + '"] [aria-pressed="true"]');
+                return b ? b.textContent : '';
+            };
+            var buildMessage = function () {
+                var name = nameIn.value.trim() || 'A customer';
+                if (mode === 'clinic') {
+                    return 'Hi! My name is ' + name + '. I\'d like to book: ' + picked('clinic', 'treatment') + '. Preferred time: ' + picked('clinic', 'day') + ', ' + picked('clinic', 'time') + '.';
+                }
+                var items = [];
+                demoEl.querySelectorAll('.stepper').forEach(function (st) {
+                    var q = +st.querySelector('output').value;
+                    if (q > 0) items.push(q + ' × ' + st.getAttribute('data-item'));
+                });
+                if (!items.length) return null;
+                return 'New order from ' + name + ': ' + items.join(', ') + '. ' + picked('food', 'pay') + '.';
+            };
+            var syncName = function () {
+                var name = nameIn.value.trim() || 'A customer';
+                demoEl.querySelector('[data-chat-name]').textContent = name;
+                demoEl.querySelector('[data-avatar]').textContent = name.charAt(0).toUpperCase();
+            };
+            var send = function () {
+                var text = buildMessage();
+                if (!text) { hint.textContent = 'Add at least one item first.'; return; }
+                hint.textContent = '';
+                syncName();
+                var sender = nameIn.value.trim() || 'A customer';
+                if (sender !== lastSender) chat.querySelectorAll('.wa-msg').forEach(function (m) { m.remove(); });
+                lastSender = sender;
+                var msg = document.createElement('div');
+                msg.className = 'wa-msg';
+                msg.textContent = text;
+                var t = document.createElement('time');
+                t.textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+                msg.appendChild(t);
+                chat.appendChild(msg);
+                var msgs = chat.querySelectorAll('.wa-msg');
+                if (msgs.length > 3) msgs[0].remove();
+                notif.querySelector('[data-n-name]').textContent = nameIn.value.trim() || 'A customer';
+                notif.querySelector('[data-n-text]').textContent = text;
+                notif.classList.add('show');
+                clearTimeout(notifTimer);
+                notifTimer = setTimeout(function () { notif.classList.remove('show'); }, 2800);
+            };
+            demoEl.querySelectorAll('.tab').forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    mode = tab.getAttribute('data-mode');
+                    demoEl.querySelectorAll('.tab').forEach(function (x) { x.setAttribute('aria-selected', x === tab ? 'true' : 'false'); });
+                    demoEl.querySelectorAll('.demo-form').forEach(function (f) { f.hidden = f.getAttribute('data-form') !== mode; });
+                    hint.textContent = '';
+                });
+            });
+            demoEl.querySelectorAll('.picks').forEach(function (group) {
+                group.addEventListener('click', function (ev) {
+                    var b = ev.target.closest('.pick');
+                    if (!b) return;
+                    group.querySelectorAll('.pick').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+                });
+            });
+            demoEl.querySelectorAll('.stepper').forEach(function (st) {
+                var out = st.querySelector('output');
+                st.addEventListener('click', function (ev) {
+                    var b = ev.target.closest('[data-step]');
+                    if (!b) return;
+                    out.value = Math.max(0, Math.min(9, +out.value + +b.getAttribute('data-step')));
+                    hint.textContent = '';
+                });
+            });
+            nameIn.addEventListener('input', syncName);
+            demoEl.querySelector('.demo-send').addEventListener('click', send);
+            // Send the default booking once, the first time the phone scrolls into view
+            if ('IntersectionObserver' in window) {
+                var demoIo = new IntersectionObserver(function (e) {
+                    if (!e[0].isIntersecting) return;
+                    demoIo.disconnect();
+                    setTimeout(send, reduce ? 0 : 700);
+                }, { threshold: 0.5 });
+                demoIo.observe(demoEl.querySelector('.wa-phone'));
+            }
+        }
+
+        // 8. Clocks: Dubai and Cairo, and how far apart they are
+        var clockEls = document.querySelectorAll('[data-tz]');
+        if (clockEls.length && window.Intl) {
+            var hoursFromUtc = function (tz, d) {
+                var local = new Date(d.toLocaleString('en-US', { timeZone: tz }));
+                var utc = new Date(d.toLocaleString('en-US', { timeZone: 'UTC' }));
+                return Math.round((local - utc) / 36e5);
+            };
+            var tick = function () {
+                var now = new Date();
+                clockEls.forEach(function (el) {
+                    var parts = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: el.getAttribute('data-tz') }).formatToParts(now);
+                    var h = parts.filter(function (p) { return p.type === 'hour'; })[0].value;
+                    var m = parts.filter(function (p) { return p.type === 'minute'; })[0].value;
+                    el.innerHTML = h + '<span class="colon">:</span>' + m;
+                });
+                var diff = hoursFromUtc('Asia/Dubai', now) - hoursFromUtc('Africa/Cairo', now);
+                var words = ['', 'one hour', 'two hours', 'three hours'];
+                document.querySelector('[data-tz-note]').textContent = diff === 0
+                    ? 'Cairo and Dubai are on the same time right now.'
+                    : 'Cairo is ' + (words[diff] || diff + ' hours') + ' behind Dubai.';
+            };
+            tick();
+            setInterval(tick, 15000);
+        }
+
+        // 9. Background spotlight follows the mouse (desktop only)
         var bg = document.getElementById('bg');
         if (bg && !reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
             var mx = 0, my = 0, queued = false;
