@@ -2,641 +2,481 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <title>Ahmed Eldabah | Digital CV</title>
-    <meta name="description" content="Ahmed Eldabah - Future Dentist & Web Developer. Bridging healthcare precision with technology.">
-    
-    <meta property="og:title" content="Ahmed Eldabah | Digital CV">
-    <meta property="og:description" content="Future Dentist & Web Developer based in Giza. Explore my interactive portfolio.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ahmed Eldabah | Websites for dental clinics and restaurants in Dubai</title>
+    <meta name="description" content="I build websites for dental clinics and restaurants in Dubai. Bookings and orders go straight to your WhatsApp.">
+    <link rel="canonical" href="https://ahmedeldabah.github.io/Resume/">
+    <meta name="theme-color" content="#F2F3F1" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F1314" media="(prefers-color-scheme: dark)">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ahmedeldabah.github.io/">
-    <meta property="og:image" content="https://placehold.co/1200x630/0B1120/0EA5E9.png?text=%3CAE/%3E">
-    
+    <meta property="og:url" content="https://ahmedeldabah.github.io/Resume/">
+    <meta property="og:title" content="Ahmed Eldabah | Websites for dental clinics and restaurants in Dubai">
+    <meta property="og:description" content="Bookings and orders go straight to your WhatsApp. See my work and message me directly.">
+    <meta property="og:image" content="https://ahmedeldabah.github.io/Resume/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ahmed Eldabah, web developer for dental clinics and restaurants in Dubai">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ahmed Eldabah | Digital CV">
-    <meta name="twitter:description" content="Future Dentist & Web Developer based in Giza.">
-    <meta name="twitter:image" content="https://placehold.co/1200x630/0B1120/0EA5E9.png?text=%3CAE/%3E">
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    <meta name="twitter:title" content="Ahmed Eldabah | Websites for dental clinics and restaurants in Dubai">
+    <meta name="twitter:description" content="Bookings and orders go straight to your WhatsApp.">
+    <meta name="twitter:image" content="https://ahmedeldabah.github.io/Resume/assets/og.png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,600..800&family=Geist:wght@400..600&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="assets/ahmed-waving.webp" fetchpriority="high">
+
     <style>
-        /* --- PREMIUM TECH-DARK VARIABLES --- */
+        /* Tokens. One accent (teal). Radius rule: buttons and tags are pills,
+           cards and panels 14px, screenshots inside cards 8px. */
         :root {
-            --bg-main: #0B1120; 
-            --bg-sec: #1E293B; 
-            --accent: #0EA5E9; 
-            --accent-glow: rgba(14, 165, 233, 0.4);
-            --whatsapp: #25D366;
-            --text-main: #F8FAFC; 
-            --text-muted: #94A3B8; 
-            --glass: rgba(15, 23, 42, 0.7); 
-            --glass-border: rgba(255, 255, 255, 0.08); 
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --bg: #F2F3F1;
+            --surface: #FBFBFA;
+            --surface-2: #E8EAE7;
+            --ink: #16191B;
+            --muted: #596166;
+            --line: #D9DDDA;
+            --accent: #1D5C6B;
+            --accent-ink: #1D5C6B;
+            --on-accent: #F4F7F6;
+            --panel: #1D5C6B;
+            --shadow: 0 1px 2px rgba(20, 45, 52, 0.06), 0 14px 34px -14px rgba(20, 45, 52, 0.22);
+            --shadow-lift: 0 2px 4px rgba(20, 45, 52, 0.06), 0 24px 48px -18px rgba(20, 45, 52, 0.30);
+            --radius: 14px;
+            --radius-img: 8px;
+            --gutter: 16px;
+            --max: 1160px;
+            --head: "Archivo", "Arial Narrow", system-ui, sans-serif;
+            --body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F1314;
+                --surface: #161B1D;
+                --surface-2: #1D2427;
+                --ink: #E9ECEA;
+                --muted: #9BA4A7;
+                --line: #283033;
+                --accent: #2B7384;
+                --accent-ink: #7CC0CC;
+                --on-accent: #F4F7F6;
+                --panel: #1D5C6B;
+                --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 34px -14px rgba(0, 0, 0, 0.6);
+                --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.3), 0 24px 48px -18px rgba(0, 0, 0, 0.7);
+            }
         }
 
-        /* --- RESET & BASE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        
-        /* Subtle Dot Matrix Background for Engineering Vibe */
-        body { 
-            background-color: var(--bg-main); 
-            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
-            color: var(--text-main); 
-            font-family: 'Inter', sans-serif; 
-            overflow-x: hidden; 
-            line-height: 1.6; 
+        /* --- BASE --- */
+        *, *::before, *::after { box-sizing: border-box; }
+        * { margin: 0; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--body);
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; }
-        .mono { font-family: 'Fira Code', monospace; color: var(--accent); font-size: 0.9rem; }
-
-        /* --- SCROLL PROGRESS BAR --- */
-        #scroll-progress {
-            position: fixed; top: 0; left: 0; width: 0%; height: 3px;
-            background: var(--accent); z-index: 10000;
-            box-shadow: 0 0 10px var(--accent-glow);
+        img { display: block; max-width: 100%; height: auto; }
+        a { color: inherit; }
+        h1, h2, h3 {
+            font-family: var(--head);
+            font-stretch: 82%;
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+            text-wrap: balance;
+        }
+        h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); }
+        h3 { font-size: 1.5rem; }
+        p { text-wrap: pretty; }
+        :focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; border-radius: 4px; }
+        section[id] { scroll-margin-top: 80px; }
+        @media (prefers-reduced-motion: no-preference) {
+            html { scroll-behavior: smooth; }
         }
 
-        /* --- PRELOADER --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-main); z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 1s ease, visibility 1s; 
-        }
-        .loader-bracket { font-family: 'Fira Code', monospace; font-size: 3rem; color: var(--accent); animation: pulse 1.5s infinite alternate; }
-        @keyframes pulse { 0% { opacity: 0.3; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.1); text-shadow: 0 0 20px var(--accent-glow); } }
+        .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+        @media (min-width: 768px) { :root { --gutter: 32px; } }
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 5%;
-            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
-            background: transparent; transition: var(--transition);
-        }
-        nav.scrolled { background: var(--glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); padding: 15px 5%; }
-        
-        .logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 5px; }
-        .logo span { color: var(--accent); }
-
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: var(--transition); cursor: pointer; }
-        .nav-links a:hover, .nav-links a.active-link { color: var(--accent); }
-        
-        .btn-contact { background: rgba(14, 165, 233, 0.1); color: var(--accent) !important; padding: 10px 24px; border-radius: 8px; border: 1px solid var(--accent); }
-        .btn-contact:hover { background: var(--accent); color: var(--bg-main) !important; box-shadow: 0 0 20px var(--accent-glow); }
-
-        .hamburger { display: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; }
+        .icon { width: 1.25em; height: 1.25em; flex: none; fill: currentColor; }
 
         /* --- BUTTONS --- */
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: var(--accent); color: var(--bg-main) !important; 
-            padding: 15px 35px; border-radius: 8px; font-weight: 800; 
-            text-decoration: none; transition: var(--transition); border: 2px solid var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            min-height: 48px; padding: 12px 24px;
+            border-radius: 999px; border: 1.5px solid transparent;
+            font: 600 1rem/1 var(--body); text-decoration: none; white-space: nowrap;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
         }
-        .btn-primary:hover { 
-            background: transparent; color: var(--accent) !important; 
-            box-shadow: 0 0 30px var(--accent-glow); 
+        .btn:active { transform: translateY(1px) scale(0.98); }
+        .btn-primary { background: var(--accent); color: var(--on-accent); }
+        .btn-primary:hover { background: color-mix(in srgb, var(--accent) 86%, #000); }
+        .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
+        .btn-ghost:hover { border-color: var(--ink); }
+        .btn-sm { min-height: 40px; padding: 8px 16px; font-size: 0.9375rem; }
+
+        /* --- HEADER --- */
+        .site-header {
+            position: sticky; top: 0; z-index: 10;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+        }
+        .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+        .brand { font-family: var(--head); font-stretch: 82%; font-weight: 800; font-size: 1.25rem; text-decoration: none; }
+        .site-nav { display: flex; align-items: center; gap: 28px; }
+        .site-nav .nav-link { display: none; text-decoration: none; color: var(--muted); font-size: 0.9375rem; font-weight: 500; }
+        .site-nav .nav-link:hover { color: var(--ink); }
+        @media (min-width: 768px) { .site-nav .nav-link { display: inline; } }
+
+        /* --- HERO --- */
+        .hero { padding: 40px 0 56px; }
+        .hero .wrap { display: grid; gap: 48px; }
+        .hero h1 { font-size: clamp(2rem, 1.3rem + 2.9vw, 3.4rem); max-width: 20ch; }
+        .hero-sub { margin-top: 20px; color: var(--muted); font-size: 1.125rem; max-width: 46ch; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+        .hero-art {
+            position: relative;
+            height: 300px;
+            margin-top: 40px;
+            background: var(--panel);
+            border-radius: var(--radius);
+        }
+        .hero-art img {
+            position: absolute; left: 50%; bottom: 14px;
+            height: 330px; width: auto;
+            transform: translateX(-50%);
+        }
+        @media (max-width: 479px) {
+            .hero-actions .btn { flex: 1 1 100%; }
+        }
+        @media (min-width: 900px) {
+            .hero { padding: 120px 0 72px; }
+            .hero .wrap { grid-template-columns: 1.25fr 1fr; align-items: end; gap: 56px; }
+            .hero-art { height: 420px; margin-top: 0; }
+            .hero-art img { height: 500px; bottom: 18px; }
         }
 
-        .btn-resume {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: var(--text-main); color: var(--bg-main) !important; 
-            padding: 15px 35px; border-radius: 8px; font-weight: 800; 
-            text-decoration: none; transition: var(--transition); border: 2px solid var(--text-main);
-        }
-        .btn-resume:hover { background: transparent; color: var(--text-main) !important; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        /* --- SECTIONS --- */
+        .section { padding: 64px 0; }
+        .section-intro { margin-top: 12px; color: var(--muted); max-width: 52ch; }
+        @media (min-width: 900px) { .section { padding: 104px 0; } #work { padding-top: 56px; } }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 50px;
-            position: relative; overflow: hidden;
+        /* --- WORK --- */
+        .work-list { display: grid; gap: 24px; margin-top: 40px; }
+        .project {
+            display: grid; gap: 24px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 12px 12px 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .hero::before {
-            content: ''; position: absolute; top: 20%; right: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            border-radius: 50%; z-index: 0; opacity: 0.5;
+        .project:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+        .project-body { padding: 0 8px; display: flex; flex-direction: column; align-items: flex-start; }
+        .tag {
+            display: inline-block; margin-bottom: 14px;
+            padding: 4px 12px; border-radius: 999px;
+            border: 1px solid var(--line);
+            color: var(--accent-ink); font-size: 0.8125rem; font-weight: 600;
         }
-        
-        .hero-content { position: relative; z-index: 1; max-width: 800px; }
-        .hero-greeting { display: block; margin-bottom: 20px; }
-        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span { color: var(--accent); }
-        
-        /* Typing Effect Styles */
-        .typing-container { color: var(--accent); display: inline-block; }
-        .cursor { display: inline-block; width: 3px; background-color: var(--accent); margin-left: 2px; animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .project h3 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); }
+        .project p { margin-top: 10px; color: var(--muted); max-width: 48ch; }
+        .tech { margin-top: 16px; font-size: 0.875rem; color: var(--muted); }
+        .tech strong { color: var(--ink); font-weight: 600; }
+        .project-link {
+            display: inline-flex; align-items: center; gap: 6px; margin-top: 20px;
+            color: var(--accent-ink); font-weight: 600; text-decoration: none;
+            border-bottom: 1.5px solid currentColor; padding-bottom: 2px;
+        }
+        .project-link .icon { width: 1em; height: 1em; }
 
-        .hero p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; }
+        /* Screenshot frames */
+        .media { position: relative; background: var(--surface-2); border-radius: var(--radius-img); padding: 12px; }
+        .shot { border-radius: var(--radius-img); border: 1px solid var(--line); width: 100%; }
+        .media-duo { padding-right: 12%; }
+        .media-duo .phone {
+            position: absolute; right: 12px; bottom: 12px;
+            width: 17%; max-width: 150px;
+            border-radius: 12px; border: 3px solid var(--ink);
+            box-shadow: var(--shadow);
+        }
+        .media-pair { display: grid; gap: 12px; }
+        @media (min-width: 600px) { .media-pair { grid-template-columns: 1fr 1fr; } }
 
-        /* --- ABOUT SECTION --- */
-        .section { padding: 100px 5%; position: relative; z-index: 2; }
-        .section-header { margin-bottom: 60px; display: flex; align-items: center; gap: 20px; }
-        .section-header h2 { font-size: 2.5rem; }
-        .section-header::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); max-width: 300px; }
+        /* Placeholder for screenshots that haven't been supplied yet */
+        .shot-todo {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+            aspect-ratio: 16 / 10; width: 100%; padding: 16px; text-align: center;
+            border: 2px dashed var(--muted); border-radius: var(--radius-img);
+            color: var(--muted); font-size: 0.875rem;
+        }
+        .shot-todo strong { color: var(--ink); font-size: 0.9375rem; }
 
-        .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
-        .about-text p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; }
-        .about-text strong { color: var(--text-main); font-weight: 600; }
-        
-        /* Tech Tags / Pills added for visual appeal */
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-        .tech-tag { 
-            background: rgba(14, 165, 233, 0.05); border: 1px solid rgba(14, 165, 233, 0.3); 
-            color: var(--accent); padding: 8px 16px; border-radius: 50px; 
-            font-size: 0.85rem; font-family: 'Fira Code', monospace; 
-            transition: var(--transition);
+        @media (min-width: 900px) {
+            .project { padding: 16px; }
+            .project-wide { grid-template-columns: 1.45fr 1fr; align-items: center; gap: 40px; }
+            .project-wide .project-body { padding: 8px 24px 8px 0; }
+            .project-wide.flip { grid-template-columns: 1fr 1.45fr; }
+            .project-wide.flip .media { order: 2; }
+            .project-wide.flip .project-body { padding: 8px 0 8px 24px; }
+            .work-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+            .work-pair .project { align-content: start; }
+            .work-pair .project-body { padding: 8px 8px 12px; }
         }
-        .tech-tag:hover { background: rgba(14, 165, 233, 0.2); transform: translateY(-2px); }
+        .work-pair { display: grid; gap: 24px; }
 
-        .info-card {
-            background: var(--bg-sec); border: 1px solid var(--glass-border); border-radius: 16px;
-            padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;
-        }
-        .info-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent);
-        }
-        .info-item { display: flex; flex-direction: column; gap: 5px; }
-        .info-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .info-value { font-weight: 600; font-size: 1rem; }
-
-        /* --- SKILLS & EXPERIENCE --- */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .skill-card {
-            background: rgba(30, 41, 59, 0.5); border: 1px solid var(--glass-border); border-radius: 16px;
-            padding: 40px 30px; transition: var(--transition); position: relative; overflow: hidden;
-        }
-        .skill-card:hover { transform: translateY(-10px) scale(1.02); background: var(--bg-sec); border-color: var(--accent); box-shadow: 0 15px 30px rgba(14, 165, 233, 0.1); }
-        .skill-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 25px; transition: transform 0.3s ease; }
-        .skill-card:hover .skill-icon { transform: scale(1.1) rotate(-5deg); }
-        .skill-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
-        .skill-card p { color: var(--text-muted); font-size: 0.95rem; }
-        .skill-badge { position: absolute; top: 20px; right: 20px; background: rgba(14, 165, 233, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
-
-        /* --- TIMELINE (EDUCATION) --- */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::before {
-            content: ''; position: absolute; top: 0; left: 20px; height: 100%; width: 2px;
-            background: var(--glass-border);
-        }
-        .timeline-item { position: relative; padding-left: 60px; margin-bottom: 50px; }
-        .timeline-item:last-child { margin-bottom: 0; }
-        .timeline-dot {
-            position: absolute; left: 11px; top: 0; width: 20px; height: 20px;
-            background: var(--bg-main); border: 2px solid var(--accent); border-radius: 50%;
-            transition: var(--transition); box-shadow: 0 0 10px rgba(14,165,233,0);
-        }
-        .timeline-item:hover .timeline-dot { background: var(--accent); box-shadow: 0 0 15px var(--accent-glow); transform: scale(1.2); }
-        
-        .timeline-date { display: inline-block; margin-bottom: 10px; }
-        .timeline-content { background: var(--bg-sec); border: 1px solid var(--glass-border); padding: 30px; border-radius: 16px; transition: var(--transition); }
-        .timeline-content:hover { border-color: rgba(255,255,255,0.2); transform: translateX(5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .timeline-content h3 { font-size: 1.3rem; margin-bottom: 5px; color: var(--accent); }
-        .timeline-content h4 { font-size: 1rem; color: var(--text-main); margin-bottom: 15px; font-weight: 600; }
-        .timeline-content p { color: var(--text-muted); font-size: 0.95rem; }
-
-        /* --- CONTACT SECTION --- */
-        .contact-section { text-align: center; }
-        .contact-section .section-header { justify-content: center; margin-bottom: 40px; }
-        .contact-section .section-header::after { display: none; }
-        
-        .availability { 
-            display: inline-flex; align-items: center; gap: 10px; 
-            background: rgba(14, 165, 233, 0.1); border: 1px solid var(--accent); 
-            padding: 10px 20px; border-radius: 50px; font-size: 0.9rem; color: var(--accent);
-            margin-bottom: 50px; font-weight: 600;
-        }
-        .pulse-dot {
-            width: 10px; height: 10px; background: var(--accent); border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); animation: pulse-dot 2s infinite;
-        }
-        @keyframes pulse-dot {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        /* --- SERVICES --- */
+        .services { list-style: none; padding: 0; margin-top: 40px; border-bottom: 1px solid var(--line); }
+        .services li { display: grid; gap: 8px; padding: 28px 0; border-top: 1px solid var(--line); }
+        .services p { color: var(--muted); max-width: 54ch; }
+        @media (min-width: 768px) {
+            .services li { grid-template-columns: 1fr 1.6fr; gap: 32px; align-items: baseline; padding: 36px 0; }
+            .services h3 { font-size: 1.75rem; }
         }
 
-        .contact-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
-            max-width: 1000px; margin: 0 auto 50px;
+        /* --- ABOUT --- */
+        .about .wrap { display: grid; gap: 32px; }
+        .about-portrait {
+            width: 168px; aspect-ratio: 1;
+            background: var(--panel); border-radius: var(--radius);
+            display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
         }
+        .about-portrait img { width: 82%; }
+        .about-text p { margin-top: 16px; max-width: 60ch; }
+        .about-text p:first-of-type { margin-top: 20px; }
+        @media (min-width: 768px) {
+            .about .wrap { grid-template-columns: 240px 1fr; gap: 56px; align-items: start; }
+            .about-portrait { width: 240px; }
+        }
+
+        /* --- CONTACT --- */
         .contact-card {
-            background: var(--bg-sec); border: 1px solid var(--glass-border); border-radius: 16px;
-            padding: 40px 20px; text-decoration: none; color: var(--text-main);
-            transition: var(--transition); display: flex; flex-direction: column; align-items: center; gap: 15px;
+            background: var(--panel); color: var(--on-accent);
+            border-radius: var(--radius);
+            padding: 40px 24px;
         }
-        .contact-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(14, 165, 233, 0.1); }
-        .contact-card i { font-size: 2.5rem; color: var(--accent); transition: var(--transition); }
-        .contact-card:hover i { transform: scale(1.1); }
-        .contact-card h4 { font-size: 1.2rem; }
-        .contact-card p { color: var(--text-muted); font-size: 0.95rem; font-family: 'Fira Code', monospace; }
-        
-        /* WhatsApp Specific Card */
-        .whatsapp-card:hover { border-color: var(--whatsapp); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.1); }
-        .whatsapp-card i { color: var(--whatsapp); }
-
-        /* --- BACK TO TOP BUTTON --- */
-        #back-to-top {
-            position: fixed; bottom: 30px; right: 30px;
-            background: rgba(14, 165, 233, 0.1); border: 1px solid var(--accent);
-            color: var(--accent); width: 45px; height: 45px;
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 1.2rem; z-index: 999; cursor: pointer;
-            opacity: 0; visibility: hidden; transition: var(--transition);
-            text-decoration: none; backdrop-filter: blur(5px);
-        }
-        #back-to-top.show { opacity: 1; visibility: visible; }
-        #back-to-top:hover { 
-            background: var(--accent); color: var(--bg-main); 
-            box-shadow: 0 0 15px var(--accent-glow); transform: translateY(-3px); 
-        }
+        .contact-card h2 { max-width: 16ch; }
+        .contact-card .btn-primary { background: var(--on-accent); color: #1D5C6B; margin-top: 28px; }
+        .contact-card .btn-primary:hover { background: #FFFFFF; }
+        .contact-lines { list-style: none; padding: 0; margin-top: 28px; display: grid; gap: 12px; font-size: 0.9375rem; }
+        @media (min-width: 768px) { .contact-lines { font-size: 1.0625rem; } }
+        .contact-lines a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; }
+        .contact-lines a:hover { text-decoration: underline; text-underline-offset: 4px; }
+        .contact-lines a span { overflow-wrap: anywhere; }
+        .contact-meta { margin-top: 28px; opacity: 0.85; font-size: 0.9375rem; }
+        .resume-link { display: inline-block; margin-top: 12px; font-size: 0.9375rem; text-underline-offset: 4px; opacity: 0.85; }
+        .resume-link:hover { opacity: 1; }
+        @media (min-width: 768px) { .contact-card { padding: 64px 56px; } }
 
         /* --- FOOTER --- */
-        footer { padding: 40px 5%; text-align: center; border-top: 1px solid var(--glass-border); margin-top: 50px; }
-        footer p { font-size: 0.85rem; color: var(--text-muted); opacity: 0.6; }
+        .site-footer { padding: 32px 0 40px; color: var(--muted); font-size: 0.875rem; }
 
-        /* --- ANIMATIONS (Scroll Reveal) --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- MOBILE RESPONSIVE OPTIMIZATION --- */
-        @media (max-width: 992px) {
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero h1 { font-size: 3.5rem; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-                background: var(--bg-main); flex-direction: column; justify-content: center;
-                transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1); z-index: -1;
-            }
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.5rem; }
-            .hamburger { display: block; }
-            
-            /* Mobile Spacing Fixes */
-            .hero { padding-top: 140px; padding-bottom: 40px; align-items: flex-start; }
-            .hero h1 { font-size: 2.2rem; margin-bottom: 15px; }
-            .hero p { font-size: 1.1rem; }
-            
-            .section { padding: 70px 5%; }
-            .section-header { margin-bottom: 40px; }
-            .section-header h2 { font-size: 1.8rem; }
-            
-            .info-card { grid-template-columns: 1fr; padding: 25px; gap: 15px; }
-            
-            .timeline::before { left: 15px; }
-            .timeline-item { padding-left: 45px; margin-bottom: 40px; }
-            .timeline-dot { left: 6px; }
-            .timeline-content { padding: 20px; }
-            
-            .contact-section .section-header h2 { font-size: 1.8rem; text-align: left; }
-            .availability { font-size: 0.8rem; padding: 8px 15px; margin-bottom: 30px; }
-            
-            .btn-resume { width: 100%; justify-content: center; }
-            #back-to-top { bottom: 20px; right: 20px; }
+        @media (prefers-reduced-motion: reduce) {
+            .project, .btn { transition: none; }
+            .project:hover { transform: none; }
         }
     </style>
 </head>
 <body>
 
-    <div id="scroll-progress"></div>
-
-    <div id="preloader">
-        <div class="loader-bracket">&lt;AE/&gt;</div>
-    </div>
-
-    <nav id="navbar">
-        <a href="#home" class="logo">Ahmed<span>.</span></a>
-        <div class="nav-links" id="navLinks">
-            <a href="#about" class="nav-item">About</a>
-            <a href="#skills" class="nav-item">Expertise</a>
-            <a href="#education" class="nav-item">Education</a>
-            <a href="#contact" class="btn-contact">Contact Me</a>
+    <header class="site-header">
+        <div class="wrap">
+            <a href="#top" class="brand">Ahmed Eldabah</a>
+            <nav class="site-nav" aria-label="Main">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#services" class="nav-link">What I do</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="https://wa.me/201000011205?text=Hi%20Ahmed%2C%20I%20saw%20your%20website." class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" viewBox="0 0 256 256" aria-hidden="true"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg>
+                    WhatsApp me
+                </a>
+            </nav>
         </div>
-        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-    </nav>
+    </header>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-content reveal">
-                <span class="mono hero-greeting">Hello, World. I am</span>
-                <h1>Ahmed <span>Eldabah.</span><br>Future Dentist & <span class="typing-container"></span><span class="cursor"></span></h1>
-                <p>I build immersive digital experiences and craft perfect smiles. Bridging the precision of healthcare with the limitless logic of technology.</p>
-                
-                <a href="#about" class="btn-primary">Explore My Work</a>
-            </div>
-        </section>
-
-        <section class="section" id="about">
-            <div class="section-header reveal">
-                <span class="mono">01.</span>
-                <h2>About Me</h2>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p>Hi, I'm <strong>Ahmed!</strong> I'm 20 years old and based in Elsheikh zayed, Giza.</p>
-                    <p>I am currently in my third year of dental school at <strong>MSA University</strong>, and I am also a self taught web and game developer.</p>
-                    <p>You might ask me how those two things go together. Honestly, I started coding when I was around 14 just because I wanted to make my own video games. That curiosity grew into a genuine passion for web development. Dentistry came later, but I quickly realized it requires the exact same mindset.</p>
-                    <p>Both fields are all about solving problems and obsessing over the tiny details. Whether I am trying to understand the anatomy of a tooth or trying to figure out why my code is breaking, I just really enjoy the process of building and fixing things. When I am not studying for exams, you can usually find me building websites or working on a new tech project.</p>
-                    
-                    <div class="tech-tags">
-                        <span class="tech-tag">HTML / CSS / JS</span>
-                        <span class="tech-tag">Game Design</span>
-                        <span class="tech-tag">UI / UX</span>
-                        <span class="tech-tag">Robotics</span>
+    <main id="top">
+        <!-- 1. HERO -->
+        <section class="hero">
+            <div class="wrap">
+                <div>
+                    <h1>I build websites for dental clinics and restaurants in Dubai — bookings and orders go straight to your WhatsApp.</h1>
+                    <p class="hero-sub">I'm Ahmed Eldabah, a web developer working remotely from Egypt. Message me and you deal with me directly.</p>
+                    <div class="hero-actions">
+                        <a href="#work" class="btn btn-ghost">See my work</a>
+                        <a href="https://wa.me/201000011205?text=Hi%20Ahmed%2C%20I%20saw%20your%20website." class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <svg class="icon" viewBox="0 0 256 256" aria-hidden="true"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg>
+                            WhatsApp me
+                        </a>
                     </div>
                 </div>
-                
-                <div class="info-card reveal" style="transition-delay: 0.2s;">
-                    <div class="info-item">
-                        <span class="info-label">Name</span>
-                        <span class="info-value">Ahmed Eldabah</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Born</span>
-                        <span class="info-value">20 / 4 / 2005</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Location</span>
-                        <span class="info-value">Elsheikh zayed, Giza</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Focus</span>
-                        <span class="info-value">Web Dev / Dentistry</span>
-                    </div>
+                <div class="hero-art">
+                    <img src="assets/ahmed-waving.webp" width="313" height="611" alt="Illustration of Ahmed waving, wearing glasses, a black zip hoodie and baggy jeans" fetchpriority="high">
                 </div>
             </div>
         </section>
 
-        <section class="section" id="skills">
-            <div class="section-header reveal">
-                <span class="mono">02.</span>
-                <h2>Areas of Expertise</h2>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-card reveal">
-                    <div class="skill-badge">6 Years</div>
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3>Web Development</h3>
-                    <p>Deeply self taught in front end and back end web technologies. Creating responsive, modern, and highly interactive user interfaces from scratch.</p>
-                </div>
-                
-                <div class="skill-card reveal" style="transition-delay: 0.1s;">
-                    <div class="skill-badge">4 Years</div>
-                    <i class="fas fa-gamepad skill-icon"></i>
-                    <h3>Game Programming</h3>
-                    <p>Extensive experience in logic building, physics engines, and interactive system design for video games, turning abstract concepts into playable reality.</p>
-                </div>
-                
-                <div class="skill-card reveal" style="transition-delay: 0.2s;">
-                    <div class="skill-badge">Certified</div>
-                    <i class="fas fa-robot skill-icon"></i>
-                    <h3>Robotics</h3>
-                    <p>Completed academic robotics workshops at Ain Shams University, expanding my understanding of hardware software integration and automated systems.</p>
-                </div>
-                
-                <div class="skill-card reveal">
-                    <div class="skill-badge">Year 3</div>
-                    <i class="fas fa-tooth skill-icon"></i>
-                    <h3>Clinical Dentistry</h3>
-                    <p>Currently mastering dental anatomy, restorative techniques, and patient care, applying rigorous scientific methodology to aesthetic health.</p>
-                </div>
-            </div>
-        </section>
+        <!-- 2. WORK -->
+        <section class="section" id="work">
+            <div class="wrap">
+                <h2>Recent work</h2>
 
-        <section class="section" id="education">
-            <div class="section-header reveal">
-                <span class="mono">03.</span>
-                <h2>Academic Journey</h2>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="mono timeline-date">Current</span>
-                        <h3>MSA University</h3>
-                        <h4>Faculty of Dentistry — 3rd Year</h4>
-                        <p>Currently navigating my third year of comprehensive clinical and theoretical dental education, developing fine motor skills and diagnostic expertise.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="mono timeline-date">Certification</span>
-                        <h3>Ain Shams University</h3>
-                        <h4>Faculty of Computer & Information Sciences</h4>
-                        <p>Successfully completed academic Robotics workshops, bridging the gap between mechanical engineering and software programming.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="mono timeline-date">Graduated</span>
-                        <h3>Egyptian American Language School</h3>
-                        <h4>High School Diploma</h4>
-                        <p>Completed my secondary education here, building a strong foundation in sciences and mathematics.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="mono timeline-date">Early Years</span>
-                        <h3>Babyhome School</h3>
-                        <h4>Primary Education</h4>
-                        <p>Where the curiosity for learning, taking things apart, and building them back together first began.</p>
+                <div class="work-list">
+                    <article class="project project-wide">
+                        <div class="media media-duo">
+                            <img class="shot" src="assets/work/clinic-desktop.webp" width="1600" height="889" loading="lazy" alt="Ivory Dental Studio homepage on a laptop, with the headline 'The Art of a Perfect Smile' and a Book Appointment button">
+                            <img class="phone" src="assets/work/clinic-mobile.webp" width="390" height="844" loading="lazy" alt="Ivory Dental Studio homepage on a phone">
+                        </div>
+                        <div class="project-body">
+                            <span class="tag">Concept project</span>
+                            <h3>Ivory Dental Studio</h3>
+                            <p>A website for a dental clinic. Patients pick a treatment, date and time, and the booking request opens in the clinic's WhatsApp, ready to send.</p>
+                            <p class="tech"><strong>Built with</strong> HTML, CSS, JavaScript</p>
+                            <a class="project-link" href="https://ahmedeldabah.github.io/clinic/" target="_blank" rel="noopener noreferrer">
+                                Open the live site
+                                <svg class="icon" viewBox="0 0 256 256" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project project-wide flip">
+                        <!-- TODO: replace both placeholders with real screenshots (cart + order dashboard), about 1600x1000 each -->
+                        <div class="media media-pair">
+                            <div class="shot-todo" role="img" aria-label="Screenshot coming soon: the cart page">
+                                <strong>Screenshot needed</strong>
+                                Cart page
+                            </div>
+                            <div class="shot-todo" role="img" aria-label="Screenshot coming soon: the order dashboard">
+                                <strong>Screenshot needed</strong>
+                                Order dashboard
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <span class="tag">Demo</span>
+                            <h3>Restaurant online ordering</h3>
+                            <p>Menu, cart and checkout for a restaurant that takes delivery orders. Every order sends a confirmation email and lands on a live dashboard for the kitchen.</p>
+                            <p class="tech"><strong>Built with</strong> React, Supabase, EmailJS</p>
+                            <!-- TODO: add a link to the demo if you want one public -->
+                        </div>
+                    </article>
+
+                    <div class="work-pair">
+                        <article class="project">
+                            <div class="media media-duo">
+                                <img class="shot" src="assets/work/nexa-desktop.webp" width="1600" height="889" loading="lazy" alt="Nexa Tech School homepage on a laptop, with Create Account and Sign In buttons">
+                                <img class="phone" src="assets/work/nexa-mobile.webp" width="390" height="844" loading="lazy" alt="Nexa Tech School homepage on a phone">
+                            </div>
+                            <div class="project-body">
+                                <span class="tag">Client project</span>
+                                <h3>Nexa Robotics School</h3>
+                                <p>A website for a robotics, AI and coding school in Cairo. Students create an account, send an enrolment request and get their own dashboard.</p>
+                                <p class="tech"><strong>Built with</strong> React, Supabase</p>
+                                <!-- TODO: add the live Nexa link if the site is public -->
+                            </div>
+                        </article>
+
+                        <article class="project">
+                            <!-- TODO: replace with real Lord of the Wings screenshots (no live link, the restaurant closed) -->
+                            <div class="media">
+                                <div class="shot-todo" role="img" aria-label="Screenshot coming soon: Lord of the Wings homepage">
+                                    <strong>Screenshot needed</strong>
+                                    Lord of the Wings homepage
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <span class="tag">Client project (restaurant has since closed)</span>
+                                <h3>Lord of the Wings</h3>
+                                <p>The website for Lord of the Wings, a wings restaurant. The restaurant has closed, so the site is shown here as screenshots.</p>
+                                <!-- TODO: add the tech used, e.g. <p class="tech"><strong>Built with</strong> ...</p> -->
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section contact-section" id="contact">
-            <div class="section-header reveal">
-                <span class="mono">04.</span>
-                <h2>Interested? Let's Work Together.</h2>
+        <!-- 3. WHAT I DO -->
+        <section class="section" id="services">
+            <div class="wrap">
+                <h2>What I do</h2>
+                <!-- TODO: add starting prices for each service once decided -->
+                <ul class="services">
+                    <li>
+                        <h3>Clinic websites with booking</h3>
+                        <p>Patients choose a treatment and a time on your site, and the request reaches your WhatsApp with their name and number.</p>
+                    </li>
+                    <li>
+                        <h3>Restaurant ordering sites</h3>
+                        <p>Your menu online with a cart and checkout, so customers order from you directly and you see every order with the address and phone number.</p>
+                    </li>
+                    <li>
+                        <h3>Fixes and redesigns</h3>
+                        <p>If your current site is slow, broken on phones or out of date, I fix it or rebuild it.</p>
+                    </li>
+                </ul>
             </div>
-            
-            <div class="availability reveal">
-                <span class="pulse-dot"></span> Available for freelance web projects & tech opportunities
+        </section>
+
+        <!-- 4. ABOUT -->
+        <section class="section about" id="about">
+            <div class="wrap">
+                <div class="about-portrait">
+                    <img src="assets/ahmed-face.webp" width="263" height="342" loading="lazy" alt="Illustrated portrait of Ahmed smiling, with curly hair and glasses">
+                </div>
+                <div class="about-text">
+                    <h2>About me</h2>
+                    <p>I'm Ahmed, and I've spent six years teaching myself web development, front end and back end.</p>
+                    <p>I've also done four years of game programming, and I have a robotics certificate from Ain Shams University.</p>
+                    <p>I'm also a third-year dental student at MSA University, so I know how a clinic actually runs.</p>
+                    <p>I write every line of your site myself, so the person you message is the person doing the work.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="contact-grid">
-                <a href="mailto:ahmedmohamedeldabah@gmail.com" class="contact-card reveal" rel="noopener noreferrer">
-                    <i class="fas fa-envelope"></i>
-                    <h4>Email Me</h4>
-                    <p>ahmedmohamedeldabah@gmail.com</p>
-                </a>
-                
-                <a href="tel:+201000011205" class="contact-card reveal" style="transition-delay: 0.1s;" rel="noopener noreferrer">
-                    <i class="fas fa-phone-alt"></i>
-                    <h4>Call Me</h4>
-                    <p>+20 100 001 1205</p>
-                </a>
-
-                <a href="https://api.whatsapp.com/send?phone=201557650318" target="_blank" class="contact-card whatsapp-card reveal" style="transition-delay: 0.2s;" rel="noopener noreferrer">
-                    <i class="fab fa-whatsapp"></i>
-                    <h4>WhatsApp</h4>
-                    <p>+20 15 5765 0318</p>
-                </a>
-            </div>
-
-            <div class="reveal" style="margin-top: 40px;">
-                <a href="https://drive.google.com/file/d/1yYhjgwt_Du1zdQWKj6gCU72BUcJpNEvQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-resume"><i class="fas fa-file-pdf"></i> Download PDF Resume</a>
+        <!-- 5. CONTACT -->
+        <section class="section" id="contact">
+            <div class="wrap">
+                <div class="contact-card">
+                    <h2>Tell me about your clinic or restaurant.</h2>
+                    <a href="https://wa.me/201000011205?text=Hi%20Ahmed%2C%20I%20saw%20your%20website." class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <svg class="icon" viewBox="0 0 256 256" aria-hidden="true"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg>
+                        WhatsApp me
+                    </a>
+                    <ul class="contact-lines">
+                        <li>
+                            <a href="tel:+201000011205">
+                                <svg class="icon" viewBox="0 0 256 256" aria-hidden="true"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"/></svg>
+                                <span>+20 100 001 1205</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:ahmedmohamedeldabah@gmail.com">
+                                <svg class="icon" viewBox="0 0 256 256" aria-hidden="true"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"/></svg>
+                                <span>ahmedmohamedeldabah@gmail.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="contact-meta">Based in Egypt · working with Dubai clients · replies within 24h</p>
+                    <a class="resume-link" href="https://drive.google.com/file/d/1yYhjgwt_Du1zdQWKj6gCU72BUcJpNEvQ/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <a href="#home" id="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <footer>
-        <p>Designed & Built by Ahmed Eldabah &copy; 2026</p>
+    <footer class="site-footer">
+        <div class="wrap">
+            <p>&copy; 2026 Ahmed Eldabah</p>
+        </div>
     </footer>
 
-    <script>
-        // 1. Preloader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('preloader').style.visibility = 'hidden';
-                }, 1000);
-            }, 1000); 
-        });
-
-        // 2. Scroll Progress Bar, Navbar Glass Effect, Back to Top, & Scrollspy (Active Links)
-        const nav = document.getElementById('navbar');
-        const progressBar = document.getElementById('scroll-progress');
-        const sections = document.querySelectorAll('section');
-        const navItems = document.querySelectorAll('.nav-links .nav-item');
-        const backToTop = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            // Navbar Glass Effect
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-            
-            // Back to Top Button Logic
-            if (window.scrollY > 500) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
-
-            // Progress Bar Calculation
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + "%";
-
-            // Scrollspy logic to highlight current section in navbar
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                // Add a small offset so it highlights slightly before the section hits the exact top
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(link => {
-                link.classList.remove('active-link');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active-link');
-                }
-            });
-        });
-
-        // 3. Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        const icon = hamburger.querySelector('i');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            if(navLinks.classList.contains('active')){
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-
-        // 4. Smooth Scroll Reveal Animations
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); 
-            });
-        }, revealOptions);
-
-        revealElements.forEach(el => revealOnScroll.observe(el));
-
-        // 5. Dynamic Typing Effect for Hero Section
-        const textArray = ["Web Developer.", "Game Programmer."];
-        const typingDelay = 100;
-        const erasingDelay = 50;
-        const newTextDelay = 2000; 
-        let textArrayIndex = 0;
-        let charIndex = 0;
-        const typedTextSpan = document.querySelector(".typing-container");
-
-        function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingDelay);
-            } else {
-                setTimeout(erase, newTextDelay);
-            }
-        }
-
-        function erase() {
-            if (charIndex > 0) {
-                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(erase, erasingDelay);
-            } else {
-                textArrayIndex++;
-                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                setTimeout(type, typingDelay + 500);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(type, newTextDelay + 250);
-        });
-    </script>
 </body>
 </html>
