@@ -101,6 +101,42 @@
             letter-spacing: -0.01em;
         }
 
+        /* --- BACKGROUND: faint grid, light pulses running along the lines,
+           and a spotlight that follows the mouse on desktop --- */
+        .bg {
+            --cell: 48px;
+            position: fixed; inset: 0; z-index: -1;
+            pointer-events: none; overflow: hidden;
+            -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, #000 35%, transparent 100%);
+            mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, #000 35%, transparent 100%);
+        }
+        @media (min-width: 768px) { .bg { --cell: 72px; } }
+        .bg-grid, .bg-spot {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(to right, var(--grid-c) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-c) 1px, transparent 1px);
+            background-size: var(--cell) var(--cell);
+        }
+        .bg-grid { --grid-c: rgba(123, 224, 190, 0.055); }
+        .bg-spot {
+            --grid-c: rgba(123, 224, 190, 0.28);
+            opacity: 0; transition: opacity 0.6s ease;
+            -webkit-mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 30%), #000, transparent 70%);
+            mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 30%), #000, transparent 70%);
+        }
+        .bg.is-lit .bg-spot { opacity: 1; }
+        .pulse { position: absolute; display: none; opacity: 0.75; }
+        .pulse.h { left: 0; top: calc(var(--n) * var(--cell)); width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent)); }
+        .pulse.v { top: 0; left: calc(var(--n) * var(--cell)); width: 1px; height: 180px; background: linear-gradient(180deg, transparent, var(--accent)); }
+        @media (prefers-reduced-motion: no-preference) {
+            .pulse { display: block; animation: var(--dur, 9s) linear var(--d, 0s) infinite both; }
+            .pulse.h { animation-name: run-x; }
+            .pulse.v { animation-name: run-y; }
+            @keyframes run-x { from { transform: translateX(-200px); } to { transform: translateX(calc(100vw + 20px)); } }
+            @keyframes run-y { from { transform: translateY(-200px); } to { transform: translateY(calc(100vh + 20px)); } }
+        }
+
         /* --- BUTTONS --- */
         .btn {
             position: relative;
@@ -141,10 +177,10 @@
         .eyebrow { color: var(--muted); font-size: 0.9375rem; font-weight: 500; }
         .hero-title {
             margin-top: 16px;
-            font-size: clamp(2.375rem, 1.2rem + 4.4vw, 5.125rem);
+            font-size: clamp(2.375rem, 1.2rem + 4vw, 4.625rem);
             font-stretch: 72%;
             line-height: 0.98;
-            max-width: 15.5ch;
+            max-width: 16.5ch;
         }
         .hero-title em { font-style: normal; color: var(--accent); }
         .hero-title .u { position: relative; white-space: nowrap; }
@@ -466,6 +502,19 @@
         <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
     </svg>
 
+    <div class="bg" id="bg" aria-hidden="true">
+        <div class="bg-grid"></div>
+        <div class="bg-spot"></div>
+        <span class="pulse h" style="--n:2; --dur:9s; --d:0s"></span>
+        <span class="pulse h" style="--n:6; --dur:12s; --d:4s"></span>
+        <span class="pulse h" style="--n:9; --dur:10s; --d:7s"></span>
+        <span class="pulse h" style="--n:13; --dur:14s; --d:2s"></span>
+        <span class="pulse v" style="--n:3; --dur:8s; --d:1s"></span>
+        <span class="pulse v" style="--n:8; --dur:11s; --d:5s"></span>
+        <span class="pulse v" style="--n:12; --dur:9s; --d:3s"></span>
+        <span class="pulse v" style="--n:17; --dur:13s; --d:6s"></span>
+    </div>
+
     <header class="site-header" id="header">
         <div class="wrap">
             <a href="#top" class="brand">Ahmed Eldabah</a>
@@ -781,6 +830,23 @@
                 });
             });
         });
+        // 7. Background spotlight follows the mouse (desktop only)
+        var bg = document.getElementById('bg');
+        if (bg && !reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            var mx = 0, my = 0, queued = false;
+            window.addEventListener('pointermove', function (ev) {
+                mx = ev.clientX; my = ev.clientY;
+                if (queued) return;
+                queued = true;
+                requestAnimationFrame(function () {
+                    bg.style.setProperty('--mx', mx + 'px');
+                    bg.style.setProperty('--my', my + 'px');
+                    bg.classList.add('is-lit');
+                    queued = false;
+                });
+            }, { passive: true });
+            document.documentElement.addEventListener('pointerleave', function () { bg.classList.remove('is-lit'); });
+        }
     })();
     </script>
 </body>
